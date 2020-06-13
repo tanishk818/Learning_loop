@@ -3,11 +3,12 @@
 <body>
    
 <!--radius=40 distance between two circle=30 -->
-<svg height="200" width="1000">
+<svg height="500" width="1000">
   <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
    <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
     <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
     <circle cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white" />
+   
 </svg> 
 <div class="container">  
     <div class="bar bar1"></div>
@@ -17,9 +18,7 @@
  <button onclick="myFunction()">></button>
 
  <script src="anime.min.js"></script>
- <script src="three.js"></script>
- <script src="three.min.js"></script>
- <script src='THREEx.KeyboardState.js'></script>
+
 <script>
     var temp;
     var value = {}
@@ -29,17 +28,8 @@
   autoplay: false,
   duration: 4000
 });
-   var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-scene.background = new THREE.Color( 0xFFFFFF);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+  
 
-
-var keyboard = new THREEx.KeyboardState();
-
-camera.position.z = 5;
 document.addEventListener("keydown", onDocumentKeyDown, false);
 function onDocumentKeyDown(event) {
     var keyCode = event.which;
@@ -59,26 +49,27 @@ function onDocumentKeyDown(event) {
     } else if (keyCode == 32) {
        
     }
-    animate();
-};
-
-var animate = function () {
-    requestAnimationFrame( animate );
-    console.log(keyboard.pressed('w'));
     
-	//cube.rotation.x += 0.01;
-//	cube.rotation.y += 0.01;
-
-	renderer.render( scene, camera );
 };
-
-animate();
-
-
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
 
 function myFunction() {
    
-  
+  myMusic = new sound("Drip.wav");
+  myMusic.play();
 
 value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx"); 
 console.log("valye is " + value.x);
