@@ -29,12 +29,12 @@
   <div>
  <!--  <button onclick="myFunction()">></button> -->
 <!-- keys code -->
- <div class="keys">
-  <div class="up arr"><i class="fa fa-arrow-up"></i></div>
+<div class="keys">
+  <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>
   <br />
-  <div class="left arr" ><i class="fa fa-arrow-left"></i></div>  
-  <div class="down arr"><i class="fa fa-arrow-down"></i></div>
-  <div class="right arr" onclick="myFunction()"><i class="fa fa-arrow-right"></i></div>
+  <div class="left arr " onclick="LeftMove()" ><i class="fa fa-arrow-left"></i></div>  
+  <div class="down arr" onclick="DownMove()"><i class="fa fa-arrow-down"></i></div>
+  <div class="right arr" onclick="RightMove()"><i class="fa fa-arrow-right"></i></div>
 </div>
 <br />
 <br />
@@ -69,16 +69,16 @@ function onDocumentKeyDown(event) {
     var keyCode = event.which;
     // up
     if (keyCode == 87) {
-       
+       UpMove()
         // down
     } else if (keyCode == 83) {
-       
+       DownMove()
         // left
     } else if (keyCode == 65) {
-       
+       LeftMove();
         // right
     } else if (keyCode == 68) {
-        myFunction();
+       RightMove();
         // space
     } else if (keyCode == 32) {
        
@@ -100,14 +100,16 @@ function sound(src) {
     }    
 }
 
-function myFunction() {
+function RightMove() {
    
   myMusic = new sound("Drip.wav");
   myMusic.play();
 
 value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx"); 
-console.log("valye is " + value.x);
- temp =+ document.getElementsByTagName("circle")[3].getAttribute("cx")+ +110;
+
+
+  temp =+ document.getElementsByTagName("circle")[3].getAttribute("cx")+ +110; 
+ 
  if (temp >= 380)
  {
      temp = 50;
@@ -124,19 +126,107 @@ console.log("valye is " + value.x);
             document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
           
          
+      
+      },
+  easing: 'easeInOutSine'
+});
+ 
+
+}
+function LeftMove()
+{
+  temp =document.getElementsByTagName("circle")[3].getAttribute("cx");
+
+  myMusic = new sound("Drip.wav");
+  myMusic.play();
+  console.log("beforele " + temp)
+  value.x = document.getElementsByTagName("circle")[3].getAttribute("cx"); 
+  temp = temp -110
+  if (temp <0)
+  {
+    temp = 270
+  }
+  console.log("for left move " + temp)
+  anime({
+  targets: value,
+  x: temp,
+  duration: 300,
+  autoplay: true,
+  update: function(){
+          console.log("SS" + value.x);
+       
+            document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
+          
+         
         console.log(value.x);
      
       },
   easing: 'easeInOutSine'
 });
- 
-/*
-if(value<380)
-  document.getElementsByTagName("circle")[3].setAttribute("cx",value); 
- else value=50
- document.getElementsByTagName("circle")[3].setAttribute("cx",value);
-*/
- console.log(value);
+}
+
+function DownMove()
+{
+  temp =document.getElementsByTagName("circle")[3].getAttribute("cy");
+
+  myMusic = new sound("Drip.wav");
+  myMusic.play();
+  console.log("beforele " + temp)
+  value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
+  temp =+ document.getElementsByTagName("circle")[3].getAttribute("cy")+ +110; 
+  if (temp > 50)
+  {
+    temp = 50
+  }
+  console.log("for left move " + temp)
+  anime({
+  targets: value,
+  x: temp,
+  duration: 300,
+  autoplay: true,
+  update: function(){
+         
+       
+            document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
+          
+         
+       
+     
+      },
+  easing: 'easeInOutSine'
+});
+}
+
+function UpMove()
+{
+  temp = document.getElementsByTagName("circle")[3].getAttribute("cy");
+
+  myMusic = new sound("Drip.wav");
+  myMusic.play();
+  console.log("beforele I m " + temp)
+  value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
+  temp = temp+  +110
+  if (temp > 380)
+  {
+    temp = 50
+  }
+  console.log("for left move " + temp)
+  anime({
+  targets: value,
+  x: temp,
+  duration: 300,
+  autoplay: true,
+  update: function(){
+          console.log("SS" + value.x);
+       
+            document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
+          
+         
+        console.log(value.x);
+     
+      },
+  easing: 'easeInOutSine'
+});
 }
 </script>
 </body>
