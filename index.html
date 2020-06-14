@@ -169,7 +169,7 @@ function DownMove()
 {
   temp =document.getElementsByTagName("circle")[3].getAttribute("cy");
 
-  myMusic = new sound("Drip.wav");
+  myMusic = new sound("InvalidMove.wav");
   myMusic.play();
   console.log("beforele " + temp)
   value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
@@ -201,7 +201,7 @@ function UpMove()
 {
   temp = document.getElementsByTagName("circle")[3].getAttribute("cy");
 
-  myMusic = new sound("Drip.wav");
+  myMusic = new sound("InvalidMove.wav");
   myMusic.play();
   console.log("beforele I m " + temp)
   value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
@@ -227,6 +227,7 @@ function UpMove()
       },
   easing: 'easeInOutSine'
 });
+
 }
 </script>
 </body>
