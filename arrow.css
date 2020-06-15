@@ -3,14 +3,25 @@ html {
   height: 100%;
 }
 
+svg{
+    position: relative;
+            
+            -webkit-transform: translateX(-20%);
+            -ms-transform: translateX(-20%);
+            transform: translateX(-20%);
+            margin-left:auto;
+            margin-right:auto;
+            margin-top: 15%;
+}
+
 .keys {
   font-family: 'Lato', sans-serif;
   text-align: center;
   width: 500px;
   height: 200px;
   margin: auto;
+  margin-left:55%;
 }
-
 .arr {
   cursor: pointer;
   width: 100px;
