@@ -71,15 +71,17 @@
  <script src='THREEx.KeyboardState.js'></script>
 <script>
   var temp;
+  var radiusvalue = {}
     var value = {}
    // value.x = document.getElementsByTagName("circle")[3].getAttribute("cx")
     var t1 = anime.timeline({
   easing: 'easeOutElastic(1, .8)',
-  autoplay: false,
+  autoplay: true,
+  loop: true,
   duration: 4000
 });
   
-
+Idle();
 document.addEventListener("keydown", onDocumentKeyDown, false);
 function onDocumentKeyDown(event) {
     var keyCode = event.which;
@@ -99,6 +101,9 @@ function onDocumentKeyDown(event) {
     } else if (keyCode == 32) {
        
     }
+    else {
+      Idle();
+    }
     
 };
 function sound(src) {
@@ -114,6 +119,39 @@ function sound(src) {
     this.stop = function(){
         this.sound.pause();
     }    
+}
+function Idle()
+{
+  console.log("I am in");
+  radiusvalue.x = document.getElementsByTagName("circle")[3].getAttribute("r"); 
+  t1.add({
+    targets:radiusvalue,
+   keyframes: [
+      
+       {x: 25},
+       {x: 20}
+   ],
+      
+       
+      
+      duration: 1000,
+      easing: 'linear',
+      autoplay: true,
+      loop: true,
+      update: function(){
+
+       
+        document.getElementsByTagName("circle")[3].setAttribute("r",radiusvalue.x);
+        
+        //console.log( scene.getBoneByName("mixamorig:LeftLeg").myRotation.x);
+      },
+        complete: function() {console.log("I M RESTSRT");}//hello.restart();} 
+
+
+    
+  });
+  t1.play();
+  console.log(t1);
 }
 
 function RightMove() {
@@ -248,3 +286,4 @@ function UpMove()
 </script>
 </body>
 </html>
+
