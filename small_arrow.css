@@ -3,36 +3,34 @@ html {
   height: 100%;
 }
 body{
-         background: url("bg.png") center center  fixed;
+         background: url("mb.png") center center  fixed;
          background-size: cover;
         }
-#svgelem {
-            position: relative;
-            left: 50%;
-            -webkit-transform: translateX(-20%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-            margin-top: 10%;
-
-         }
+#svgelem{
+    margin-top: 50%;
+}
  .keys {
   font-family: 'Lato', sans-serif;
   text-align: center;
-  width: 500px;
-  height: 200px;
+  width: 300px;
+  height: 100px;
   margin: auto;
-  margin-left: 55%;
-  margin-top: 7%;
+  margin-top: 30%;
+margin-right: -15%;
+position:absolute;                  
+                bottom:0;                          
+                right:0; 
 }
+
 .arr {
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  width: 20px;
+  height: 20px;
   text-align: center;
-  line-height: 100px;
+  line-height: 30px;
   background: grey;
   color: white;
-  font-size: 50px;
+  font-size: 1px;
   border-right: 10px solid #4d4d4d;
   border-bottom: 10px solid #4d4d4d;
   border-left: 10px solid #5a5a5a;
@@ -58,7 +56,9 @@ body{
   text-shadow: 0 0 10px white;
   transform: translate(0, 2px);
 }
-
+.fa{
+    font-size: 20px;
+}
 .names {
   font-size: 18px;
   font-family: 'Lato', sans-serif;
