@@ -4,24 +4,25 @@ html {
 }
 body{
          background: url("mb.png") center center  fixed;
-         background-size: cover;
+         background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #34D0EF;
         }
 #svgelem{
-    margin-top: 50%;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
 }
- .keys {
+.keys {
   font-family: 'Lato', sans-serif;
   text-align: center;
   width: 300px;
   height: 100px;
-  margin: auto;
-  margin-top: 30%;
-margin-right: -15%;
-position:absolute;                  
-                bottom:0;                          
-                right:0; 
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    
 }
-
 .arr {
   cursor: pointer;
   width: 20px;
