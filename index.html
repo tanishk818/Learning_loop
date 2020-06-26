@@ -1,269 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" media="screen and (min-width: 900px)" href="arrow.css">
-        <link rel="stylesheet" media="screen and (max-width: 900px)" href="small_arrow.css">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-</head>
-<body>
-   
-<!--radius=40 distance between two circle=30 -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<svg   id = "svgelem" height="200" width="500" xmlns="http://www.w3.org/2000/svg">
-<filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-    <feComponentTransfer in=SourceAlpha>
-      <feFuncA type="table" tableValues="1 0" />
-    </feComponentTransfer>
-    <feGaussianBlur stdDeviation="4"/>
-    <feOffset dx="0" dy="5" result="offsetblur"/>
-    <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
-    <feComposite in2="offsetblur" operator="in"/>
-    <feComposite in2="SourceAlpha" operator="in" />
-    <feMerge>
-      <feMergeNode in="SourceGraphic" />
-      <feMergeNode />
-    </feMerge>
-  </filter>
-<circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
-   <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-    <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-    <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
-</svg> 
-<div class="container">  
-    <div class="bar bar1"></div>
-    <div class="ball"></div>
-    <div class="bar bar2"></div>
-  </div>
- <!--  <button onclick="myFunction()">></button> -->
-<!-- keys code -->
-<div class="keys">
-  <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>
-  <br />
-  <div class="left arr " onclick="LeftMove()" ><i class="fa fa-arrow-left"></i></div>  
-  <div class="down arr" onclick="DownMove()"><i class="fa fa-arrow-down"></i></div>
-  <div class="right arr" onclick="RightMove()"><i class="fa fa-arrow-right"></i></div>
-</div>
-<!-- keys end -->
- <script src="anime.min.js"></script>
- <script src="three.js"></script>
- <script src="three.min.js"></script>
- <script src='THREEx.KeyboardState.js'></script>
-<script>
-  var temp;
-  var radiusvalue = {}
-    var value = {}
-   // value.x = document.getElementsByTagName("circle")[3].getAttribute("cx")
-    var t1 = anime.timeline({
-  easing: 'easeOutElastic(1, .8)',
-  autoplay: true,
-  loop: true,
-  duration: 4000
-});
-  
-Idle();
-document.addEventListener("keydown", onDocumentKeyDown, false);
-function onDocumentKeyDown(event) {
-    var keyCode = event.which;
-    // up
-    if (keyCode == 87) {
-       UpMove()
-        // down
-    } else if (keyCode == 83) {
-       DownMove()
-        // left
-    } else if (keyCode == 65) {
-       LeftMove();
-        // right
-    } else if (keyCode == 68) {
-       RightMove();
-        // space
-    } else if (keyCode == 32) {
-       
-    }
-    else {
-      Idle();
-    }
-    
-};
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-        this.sound.play();
-    }
-    this.stop = function(){
-        this.sound.pause();
-    }    
-}
-function Idle()
-{
-  console.log("I am in");
-  radiusvalue.x = document.getElementsByTagName("circle")[3].getAttribute("r"); 
-  t1.add({
-    targets:radiusvalue,
-   keyframes: [
-      
-       {x: 25},
-       {x: 20}
-   ],
-      
-       
-      
-      duration: 1000,
-      easing: 'linear',
-      autoplay: true,
-      loop: true,
-      update: function(){
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link  href="index.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">IMAGE OF LEARNING LOOP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a id="Modallink" class="nav-link" >About Us <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- about us modal -->
+        <!-- login_modal -->
+        <div id="Modal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg" role="content">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">About Us </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="media">
+                                    <img class="d-flex mr-3 img-thumbnail align-self-center"
+                                         src="" alt="image coming soon">
+                                    <div class="media-body">
+                                        <h2 class="mt-0">Yuvraj Darwani</h2>
+                                        <h4>Game Developer</h4>
+                                        <p class="d-none d-sm-block">
+                                            BIO GOES HERE! UPLOADING VERY SOON
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="media">
 
-       
-        document.getElementsByTagName("circle")[3].setAttribute("r",radiusvalue.x);
-        
-        //console.log( scene.getBoneByName("mixamorig:LeftLeg").myRotation.x);
-      },
-        complete: function() {console.log("I M RESTSRT");}//hello.restart();} 
+                                    <div class="media-body">
+                                        <h2 class="mt-0">Tanishk Agarwal</h2>
+                                        <h4>Web Developer</h4>
+                                        <p class="d-none d-sm-block">
+                                            BIO GOES HERE! UPLOADING VERY SOON
+                                        </p>
+                                    </div>
+                                    <img class="d-flex mr-3 img-thumbnail align-self-center"
+                                         src="" alt="image coming soon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal ends here -->
 
+        <div id="clouds">
+            <div class="cloud x1"></div>
+            <!-- Time for multiple clouds to dance around -->
+            <div class="cloud x2"></div>
+            <div class="cloud x3"></div>
+            <div class="cloud x4"></div>
+            <div class="cloud x5"></div>
+        </div>
+        <div class="container">
 
-    
-  });
-  t1.play();
-  console.log(t1);
-}
+            <div class="row" id="play-btn">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <a href="lev1.html">
+                        <svg id="play"  viewBox="0 0 163 163" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"="0px">
 
-function RightMove() {
-   
-  myMusic = new sound("Drip.wav");
-  myMusic.play();
+                        <g fill="none">
+                        <g  transform="translate(2.000000, 2.000000)" stroke-width="4">
+                        <path d="M10,80 C10,118.107648 40.8923523,149 79,149 L79,149 C117.107648,149 148,118.107648 148,80 C148,41.8923523 117.107648,11 79,11" id="lineOne" stroke="#A8D0E6"></path>
+                        <path d="M105.9,74.4158594 L67.2,44.2158594 C63.5,41.3158594 58,43.9158594 58,48.7158594 L58,109.015859 C58,113.715859 63.4,116.415859 67.2,113.515859 L105.9,83.3158594 C108.8,81.1158594 108.8,76.6158594 105.9,74.4158594 L105.9,74.4158594 Z" id="triangle" stroke="#A8D0E6"></path>
+                        <path d="M159,79.5 C159,35.5933624 123.406638,0 79.5,0 C35.5933624,0 0,35.5933624 0,79.5 C0,123.406638 35.5933624,159 79.5,159 L79.5,159" id="lineTwo" stroke="#A8D0E6"></path>
+                        </g>
+                        </g>
+                        </svg></a>
+                    <h1 class="header">Learning Loop</h1>
+                </div>
+            </div> 
+            
+        </div>
 
-value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx"); 
-
-
-  temp =+ document.getElementsByTagName("circle")[3].getAttribute("cx")+ +110; 
- 
- if (temp >= 380)
- {
-     temp = 50;
- }
- console.log(temp + " tem ")
- anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-          console.log("SS" + value.x);
-       
-            document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
-          
-         
-      
-      },
-  easing: 'easeInOutSine'
-});
- 
-
-}
-function LeftMove()
-{
-  temp =document.getElementsByTagName("circle")[3].getAttribute("cx");
-
-  myMusic = new sound("Drip.wav");
-  myMusic.play();
-  console.log("beforele " + temp)
-  value.x = document.getElementsByTagName("circle")[3].getAttribute("cx"); 
-  temp = temp -110
-  if (temp <0)
-  {
-    temp = 270
-  }
-  console.log("for left move " + temp)
-  anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-          console.log("SS" + value.x);
-       
-            document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
-          
-         
-        console.log(value.x);
-     
-      },
-  easing: 'easeInOutSine'
-});
-}
-
-function DownMove()
-{
-  temp =document.getElementsByTagName("circle")[3].getAttribute("cy");
-
-  myMusic = new sound("InvalidMove.wav");
-  myMusic.play();
-  console.log("beforele " + temp)
-  value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
-  temp =+ document.getElementsByTagName("circle")[3].getAttribute("cy")+ +110; 
-  if (temp > 50)
-  {
-    temp = 50
-  }
-  console.log("for left move " + temp)
-  anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-         
-       
-            document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
-          
-         
-       
-     
-      },
-  easing: 'easeInOutSine'
-});
-}
-
-function UpMove()
-{
-  temp = document.getElementsByTagName("circle")[3].getAttribute("cy");
-
-  myMusic = new sound("InvalidMove.wav");
-  myMusic.play();
-  console.log("beforele I m " + temp)
-  value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
-  temp = temp+  +110
-  if (temp > 380)
-  {
-    temp = 50
-  }
-  console.log("for left move " + temp)
-  anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-          console.log("SS" + value.x);
-       
-            document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
-          
-         
-        console.log(value.x);
-     
-      },
-  easing: 'easeInOutSine'
-});
-
-}
-</script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script>
+            $('#Modallink').click(function () {
+                $('#Modal').modal('show');
+            });
+        </script>
+    </body>
 </html>
