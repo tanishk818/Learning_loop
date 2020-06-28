@@ -11,41 +11,46 @@
    
 <!--radius=40 distance between two circle=30 -->
 
-<svg   id = "svgelem" height="200" width="500" xmlns="http://www.w3.org/2000/svg">
-<filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-    <feComponentTransfer in=SourceAlpha>
-      <feFuncA type="table" tableValues="1 0" />
-    </feComponentTransfer>
-    <feGaussianBlur stdDeviation="4"/>
-    <feOffset dx="0" dy="5" result="offsetblur"/>
-    <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
-    <feComposite in2="offsetblur" operator="in"/>
-    <feComposite in2="SourceAlpha" operator="in" />
-    <feMerge>
-      <feMergeNode in="SourceGraphic" />
-      <feMergeNode />
-    </feMerge>
-  </filter>
-<circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
-   <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-    <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-    <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
-</svg> 
-<div class="container">  
-    <div class="bar bar1"></div>
-    <div class="ball"></div>
-    <div class="bar bar2"></div>
-  </div>
- <!--  <button onclick="myFunction()">></button> -->
-<!-- keys code -->
-<div class="keys">
-  <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>
-  <br />
-  <div class="left arr " onclick="LeftMove()" ><i class="fa fa-arrow-left"></i></div>  
-  <div class="down arr" onclick="DownMove()"><i class="fa fa-arrow-down"></i></div>
-  <div class="right arr" onclick="RightMove()"><i class="fa fa-arrow-right"></i></div>
-</div>
-<!-- keys end -->
+        <!--radius=40 distance between two circle=30 -->
+        <div class="container1">
+            <div class="screen monitor">
+                <svg height="200" width="320" xmlns="http://www.w3.org/2000/svg">
+                <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feComponentTransfer in=SourceAlpha>
+                        <feFuncA type="table" tableValues="1 0" />
+                    </feComponentTransfer>
+                    <feGaussianBlur stdDeviation="4"/>
+                    <feOffset dx="0" dy="5" result="offsetblur"/>
+                    <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
+                    <feComposite in2="offsetblur" operator="in"/>
+                    <feComposite in2="SourceAlpha" operator="in" />
+                    <feMerge>
+                        <feMergeNode in="SourceGraphic" />
+                        <feMergeNode />
+                    </feMerge>
+                </filter>
+                <circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
+                <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+                <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+                <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
+                </svg>
+            </div>
+        </div> 
+        <div class="keys">
+            <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>
+            <br />
+            <div class="left arr " onclick="LeftMove()" ><i class="fa fa-arrow-left"></i></div>
+            <div class="down arr" onclick="DownMove()"><i class="fa fa-arrow-down"></i></div>
+            <div class="right arr" onclick="RightMove()"><i class="fa fa-arrow-right"></i></div>
+        </div>
+
+        <!--<div class="container">
+        <div class="bar bar1"></div>
+        <div class="ball"></div>
+        <div class="bar bar2"></div>
+    </div>-->
+
+        <!-- keys end -->
  <script src="anime.min.js"></script>
  <script src="three.js"></script>
  <script src="three.min.js"></script>

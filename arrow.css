@@ -1,84 +1,116 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
 html {
-  height: 100%;
+    height: 100%;
 }
-body{
-         background: url("bg.png") center center  fixed;
-         background-size: cover;
-        }
-#svgelem {
-            position: relative;
-            left: 50%;
-            -webkit-transform: translateX(-20%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-            margin-top: 10%;
+.container1 {
+    width: 680px;
+    margin: 0px auto;
+    position: relative;
+}
+.container1 > .screen {
+    width: 720px;
+    height: 440px;
+    position: relative;  
+    background: white;
+    border: 20px solid #474e5d;
+    border-radius: 10px;
+}
+.monitor > div {
+    position: absolute;
+}
+.monitor:before,
+.monitor:after,
+.laptop:before{
+    content: "";
+    position: absolute;
+    left: 50%;
+}
+.monitor:before,
+.laptop:before {
+    top: -10px;
+    margin: -3px 0 0 -3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background: #a5adbd;
+}
+.screen:after {
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    bottom: -10px;
+    margin: 0 0 -4px -4px;
+    background: #e8ebf0;
+}
 
-         }
- .keys {
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  width: 500px;
-  height: 200px;
-  margin: auto;
-  margin-left: 55%;
-  margin-top: 7%;
+
+
+.keys {
+    position:absolute;
+    bottom: 10%;
+    left:40%;
+    right:60%;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    width: 350px;
+    height: 150px;
+
 }
 .arr {
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  background: grey;
-  color: white;
-  font-size: 50px;
-  border-right: 10px solid #4d4d4d;
-  border-bottom: 10px solid #4d4d4d;
-  border-left: 10px solid #5a5a5a;
-  border-top: 10px solid #676767;
-  display: inline-block;
-  margin: 5px;
-  transition: all .05s linear;
-  user-select: none;
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    line-height: 75px;
+    background: grey;
+    color: white;
+    font-size: 30px;
+    border-right: 10px solid #4d4d4d;
+    border-bottom: 10px solid #4d4d4d;
+    border-left: 10px solid #5a5a5a;
+    border-top: 10px solid #676767;
+    display: inline-block;
+    margin: 5px;
+    transition: all .05s linear;
+    user-select: none;
 }
 .arr:active {
-  border-bottom: 8px solid #4d4d4d;
-  text-shadow: 0 0 10px white, 0 0 10px white, 0 0 20px white;
-  transform: translate(0, 2px);
+    border-bottom: 8px solid #4d4d4d;
+    text-shadow: 0 0 10px white, 0 0 10px white, 0 0 20px white;
+    transform: translate(0, 2px);
 }
 
 .up {
-  position: relative;
-  top: -4px;
+    position: relative;
+    top: -4px;
 }
 
 .pressed {
-  border-bottom: 8px solid #4d4d4d;
-  text-shadow: 0 0 10px white;
-  transform: translate(0, 2px);
+    border-bottom: 8px solid #4d4d4d;
+    text-shadow: 0 0 10px white;
+    transform: translate(0, 2px);
 }
 
 .names {
-  font-size: 18px;
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  color: white;
-  text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white;
 }
 
 .b {
-  color: blue;
-  text-shadow: 0 0 10px blue, 0 0 10px blue, 0 0 10px blue, 0 0 10px blue;
-  font-size: 100px;
-  font-family: serif;
+    color: blue;
+    text-shadow: 0 0 10px blue, 0 0 10px blue, 0 0 10px blue, 0 0 10px blue;
+    font-size: 100px;
+    font-family: serif;
 }
 
 .a {
-  color: yellow;
-  text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow;
-  font-size: 100px;
-  font-family: serif;
+    color: yellow;
+    text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow;
+    font-size: 100px;
+    font-family: serif;
 }/*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
