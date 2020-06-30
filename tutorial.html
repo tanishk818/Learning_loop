@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Intro-Tutorial</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+       <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+
+            body{
+                background-color: #d5fefd;
+                background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+
+            }
+     
+            #myVideo {
+                position: absolute;
+                top:50%;
+                margin-right: -50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+
+
+            }
+            h1{
+                position: absolute;
+            
+                margin-right: -50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+            }
+            @media only screen and (max-width: 600px){
+                #myVideo{
+                    width:100%;
+                }
+            }
+body {
+	 background-color: #fb9;
+	 color: #aaa;
+	 font-size: 40px;
+}
+ .text {
+	 display: flex;
+	 justify-content: center;
+	 margin-top: 5%;
+	 transform: translateY(-50%);
+	 text-align: center;
+	 transition: transform 0.3s ease-in-out;
+}
+@media only screen and (max-width:600px){
+    .text{
+        margin-top: 25%;
+    }
+}
+ .text:hover {
+	 transform: rotateX(35deg), translateY(-50%);
+}
+ .text:hover span {
+	 color: #ccc;
+}
+ .text:hover span:nth-child(odd) {
+	 transform: skewY(15deg);
+}
+ .text:hover span:nth-child(even) {
+	 transform: skewY(-15deg);
+	 background-color: #f9f9f9;
+	 color: #a6a6a6;
+}
+ .text > span {
+	 display: block;
+	 background-color: #fff;
+	 width: 120px;
+	 height: 120px;
+	 line-height: 120px;
+	 transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	 box-shadow: 0 40px 50px rgba(0, 0, 0, 0.1);
+}
+ .text > span:first-child {
+	 border-radius: 5px 0 0 5px;
+}
+
+ 
+ .button-container {
+	 position: absolute;
+	 bottom: 0;
+	 right: 0;
+
+}
+ .btn {
+	 display: block;
+	 height: 50px;
+	 width: 186px;
+	 position: relative;
+	 overflow: hidden;
+	 text-decoration: none;
+	 text-transform: uppercase;
+	 letter-spacing: 2px;
+	 color: white;
+	 font-size: 14px;
+	 text-align: center;
+}
+ .btn:after {
+	 position: absolute;
+	 content: '';
+	 display: inline-block;
+	 background:  #10E7DC;
+	 background: linear-gradient(45deg, #10E7DC 0%, #8EE4AF 25%, #659DBD 51%, #6CDAEE 100%);
+	 height: 50px;
+	 width: 372px;
+	 z-index: -1;
+	 transform: translateX(-280px);
+	 transition: transform 400ms ease-in;
+}
+ .btn:hover:after {
+	 transform: translateX(-200px);
+}
+ .btn span {
+	 position: relative;
+	 top: 16px;
+}
+ 
+        </style>
+    </head>
+    <body>
+    <div class="text">
+  <span>S</span>
+  <span>T</span>
+  <span>O</span>
+  <span>R</span>
+  <span>Y</span>
+  <span></span>
+  <span>T</span>
+  <span>I</span>
+  <span>M</span>
+  <span>E</span>
+</div>
+        <video id="myVideo" autoplay  controls >
+            <source src="intro_tutorials.mp4" type="video/mp4">
+        </video>
+    <div class="button-container">
+  <a href="lev1.html" class="btn"><span>START</span></a>
+</div>
+    </body>
+</html>
