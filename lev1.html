@@ -12,7 +12,12 @@
         <style>
             @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
-
+            p{
+                font-size: 22px;
+                font-family: 'Special Elite', cursive;
+                font-style: italic;
+                font-weight: 22px;
+            }
 .quote {
 	font-family: 'Special Elite', cursive;
 	background: #fffdf5;
@@ -137,6 +142,9 @@ cite {
                 <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
                 <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
                 </svg>
+                <p></p>
+                <p></p>
+                <p></p>
             </div>
         </div> 
         <div class="keys">
@@ -163,6 +171,7 @@ cite {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script>
+   
      var i=0;
 var count=0;
 var levels = [
@@ -170,6 +179,7 @@ var levels = [
     lev:[1,1,1]
   }
 ];
+ print();
   var temp;
   var radiusvalue = {}
     var value = {}
@@ -264,6 +274,7 @@ value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx");
 
   temp =+ document.getElementsByTagName("circle")[3].getAttribute("cx")+ +110; 
  check(1);
+ print();
  if (temp >= 380)
  {
      temp = 50;
@@ -297,6 +308,7 @@ function LeftMove()
   value.x = document.getElementsByTagName("circle")[3].getAttribute("cx"); 
   temp = temp -110;
   check(-1);
+  print();
   if (temp <0)
   {
     temp = 270
@@ -330,6 +342,7 @@ function DownMove()
   value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
   temp =+ document.getElementsByTagName("circle")[3].getAttribute("cy")+ +110; 
   check(-2);
+  print();
   if (temp > 50)
   {
     temp = 50
@@ -345,7 +358,7 @@ function DownMove()
        
             document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
           
-         
+          
        
      
       },
@@ -363,6 +376,7 @@ function UpMove()
   value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
   temp = temp+  +110
   check(2);
+  print();
   if (temp > 380)
   {
     temp = 50
@@ -400,12 +414,31 @@ function check(x){
     document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
     $('#lossModal').modal('show');
   }
-   if(count==levels[i].lev.length-1){
+   if(count===levels[i].lev.length){
     count=0;
    console.log("you win the level");
    $('#winModal').modal('show');
     //alert("can't stop the champion!bravo! you win the level");
   }
+}
+function print(){
+    var text=document.getElementsByTagName("p");
+    for(var j=0;j<3;j++){
+            if(levels[i].lev[j]===1)
+            text[j].textContent="right()";
+            else if(levels[i].lev[j]===-1)
+            text[j].textContent="left()";
+            else if(levels[i].lev[j]===2)
+            text[j].textContent="up()";
+            else 
+            text[j].textContent="down()";
+    }
+    for(var j=0;j<count;j++){
+        text[j].style.color="#39FF14";
+    }
+    for(var j=count;j<3;j++){
+        text[j].style.color="red";
+    }
 }
 </script>
 </body>

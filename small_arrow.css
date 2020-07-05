@@ -61,7 +61,7 @@ html {
   width: 10px;
   height: 10px;
   text-align: center;
-  line-height: 10px;
+  line-height: 5px;
   background: grey;
   color: white;
   font-size: 1px;
@@ -91,7 +91,7 @@ html {
   transform: translate(0, 2px);
 }
 .fa{
-    font-size: 15px;
+    font-size: 10px;
 }
 .names {
   font-size: 18px;
