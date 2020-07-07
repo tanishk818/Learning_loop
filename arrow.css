@@ -2,18 +2,16 @@
 html {
     height: 100%;
 }
-.container1 {
-    width: 680px;
-    margin: 0px auto;
-    position: relative;
-}
-.container1 > .screen {
-    width: 720px;
-    height: 440px;
-    position: relative;  
+.screen {
+    width: 70%;
+    height: 85%;
+    position: absolute;  
     background: white;
     border: 20px solid #474e5d;
     border-radius: 10px;
+    left:50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
 }
 .monitor > div {
     position: absolute;
@@ -42,32 +40,44 @@ html {
     margin: 0 0 -4px -4px;
     background: #e8ebf0;
 }
-
-
+.t{
+    right:25%;
+    margin: 1px;
+    clear: right;
+    top:0;
+}
+p{             
+                font-size: 20px;
+                font-family: 'Special Elite', cursive;
+                font-style: italic;
+                font-weight: 20px;
+                margin:0px;
+                padding: 0px;
+            }
 
 .keys {
+   
     position:absolute;
-    bottom: 10%;
+    bottom: -10px;
     left:40%;
-    right:60%;
+    margin-right:-60%;
     font-family: 'Lato', sans-serif;
     text-align: center;
     width: 350px;
-    height: 150px;
-
+     height: 15%;
 }
 .arr {
     cursor: pointer;
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    line-height: 75px;
+    line-height: 30px;
     background: grey;
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     border-right: 10px solid #4d4d4d;
     border-bottom: 10px solid #4d4d4d;
-    border-left: 10px solid #5a5a5a;
+    border-left: 10px solid #5a5a5a;  
     border-top: 10px solid #676767;
     display: inline-block;
     margin: 5px;
@@ -90,7 +100,9 @@ html {
     text-shadow: 0 0 10px white;
     transform: translate(0, 2px);
 }
-
+.fa{
+    font-size: 25px;
+}
 .names {
     font-size: 18px;
     font-family: 'Lato', sans-serif;
@@ -111,13 +123,4 @@ html {
     text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow;
     font-size: 100px;
     font-family: serif;
-}/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 13 Jun, 2020, 2:59:10 PM
-    Author     : dell
-*/
-
+}
