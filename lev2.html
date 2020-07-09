@@ -137,7 +137,7 @@ cite {
                 <circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
                 <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
                 <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-                  <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
+                 
                 <circle  cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
                 <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
                 <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
@@ -150,8 +150,21 @@ cite {
                  <circle  cx="50" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
                 <circle cx="160" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
                 <circle cx="270" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+                <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
                 </svg>
                 <div class="t">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
                 <p></p>
                 <p></p>
                 <p></p>
@@ -174,15 +187,14 @@ cite {
 
         <!-- keys end -->
  <script src="anime.min.js"></script>
- <script src="three.js"></script>
- <script src="three.min.js"></script>
+ 
  <script src='THREEx.KeyboardState.js'></script>
  
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script>
-     var i=0;
+     var i=1;
 var count=0;
 var visibilityKey =   [{
   x: 0,
@@ -196,7 +208,11 @@ var visibilityKey =   [{
 
 var levels = [
   {
-    lev:[1,1,1]
+    lev:[1,1,1],
+  },
+ 
+  {
+    lev:[-2, -2, -2,-2, 1, 1, 2, 2, 2, 2, 1]
   }
 ];
  print();
@@ -218,7 +234,7 @@ var t2 = anime.timeline({
   loop: true,
   duration: 4000
 });
-Init();
+//Init();
 
 Idle();
 document.addEventListener("keydown", onDocumentKeyDown, false);
@@ -307,8 +323,8 @@ function sound(src) {
 }
 function Idle()
 {
-  console.log("I am in");
-  radiusvalue.x = document.getElementsByTagName("circle")[3].getAttribute("r"); 
+ 
+  radiusvalue.x = document.getElementsByTagName("circle")[15].getAttribute("r"); 
   t1.add({
     targets:radiusvalue,
    keyframes: [
@@ -326,7 +342,7 @@ function Idle()
       update: function(){
 
        
-        document.getElementsByTagName("circle")[3].setAttribute("r",radiusvalue.x);
+        document.getElementsByTagName("circle")[15].setAttribute("r",radiusvalue.x);
         
        
       },
@@ -336,15 +352,15 @@ function Idle()
     
   });
   t1.play();
-  console.log(t1);
+  
 }
 
 function RightMove() {
  
   myMusic = new sound("Drip.wav");
   myMusic.play();
-value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx"); 
-  temp =+ document.getElementsByTagName("circle")[3].getAttribute("cx")+ +110; 
+value.x =+ document.getElementsByTagName("circle")[15].getAttribute("cx"); 
+  temp =+ document.getElementsByTagName("circle")[15].getAttribute("cx")+ +110; 
  check(1);
  print();
  if (temp >= 380)
@@ -358,7 +374,7 @@ value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx");
   duration: 300,
   autoplay: true,
   update: function(){
-            document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
+            document.getElementsByTagName("circle")[15].setAttribute("cx",value.x);
           
          
       
@@ -371,12 +387,12 @@ value.x =+ document.getElementsByTagName("circle")[3].getAttribute("cx");
 function LeftMove()
 {
   
-  temp =document.getElementsByTagName("circle")[3].getAttribute("cx");
+  temp =document.getElementsByTagName("circle")[15].getAttribute("cx");
 
   myMusic = new sound("Drip.wav");
   myMusic.play();
 
-  value.x = document.getElementsByTagName("circle")[3].getAttribute("cx"); 
+  value.x = document.getElementsByTagName("circle")[15].getAttribute("cx"); 
   temp = temp -110;
   check(-1);
   print();
@@ -393,7 +409,7 @@ function LeftMove()
   update: function(){
           console.log("SS" + value.x);
        
-            document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
+            document.getElementsByTagName("circle")[15].setAttribute("cx",value.x);
           
   
      
@@ -404,20 +420,18 @@ function LeftMove()
 
 function DownMove()
 {
-  temp =document.getElementsByTagName("circle")[3].getAttribute("cy");
+  temp =document.getElementsByTagName("circle")[15].getAttribute("cy");
 
   myMusic = new sound("InvalidMove.wav");
   myMusic.play();
 
-  value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
-  temp =+ document.getElementsByTagName("circle")[3].getAttribute("cy")+ +110; 
+  value.x = document.getElementsByTagName("circle")[15].getAttribute("cy"); 
+  temp =+ document.getElementsByTagName("circle")[15].getAttribute("cy")+ +110; 
+  
   check(-2);
   print();
-  if (temp > 50)
-  {
-    temp = 50
-  }
-  console.log("for left move " + temp)
+ 
+  
   anime({
   targets: value,
   x: temp,
@@ -426,7 +440,7 @@ function DownMove()
   update: function(){
          
        
-            document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
+            document.getElementsByTagName("circle")[15].setAttribute("cy",value.x);
           
           
        
@@ -438,32 +452,29 @@ function DownMove()
 
 function UpMove()
 {
-  temp = document.getElementsByTagName("circle")[3].getAttribute("cy");
+  temp = document.getElementsByTagName("circle")[15].getAttribute("cy");
 
   myMusic = new sound("InvalidMove.wav");
   myMusic.play();
-  console.log("beforele I m " + temp)
-  value.x = document.getElementsByTagName("circle")[3].getAttribute("cy"); 
-  temp = temp+  +110
+  
+  value.x = document.getElementsByTagName("circle")[15].getAttribute("cy"); 
+  temp =+ document.getElementsByTagName("circle")[15].getAttribute("cy") - 110; 
   check(2);
   print();
-  if (temp > 380)
-  {
-    temp = 50
-  }
-  console.log("for left move " + temp)
+  
+ 
   anime({
   targets: value,
   x: temp,
   duration: 300,
   autoplay: true,
   update: function(){
-          console.log("SS" + value.x);
+         
        
-            document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
+            document.getElementsByTagName("circle")[15].setAttribute("cy",value.x);
           
          
-        console.log(value.x);
+       
      
       },
   easing: 'easeInOutSine'
@@ -480,8 +491,8 @@ function check(x){
     temp=50;
     console.log("count : "+count);
     console.log("you hit the wrong key");
-    document.getElementsByTagName("circle")[3].setAttribute("cx",value.x);
-    document.getElementsByTagName("circle")[3].setAttribute("cy",value.x);
+    document.getElementsByTagName("circle")[15].setAttribute("cx",value.x);
+    document.getElementsByTagName("circle")[15].setAttribute("cy",value.x);
     $('#lossModal').modal('show');
   }
    if(count===levels[i].lev.length){
@@ -493,7 +504,8 @@ function check(x){
 }
 function print(){
     var text=document.getElementsByTagName("p");
-    for(var j=0;j<3;j++){
+    console.log(levels);
+    for(var j=0;j<levels[i].lev.length;j++) {
             if(levels[i].lev[j]===1)
             text[j].textContent="right()";
             else if(levels[i].lev[j]===-1)
@@ -506,7 +518,7 @@ function print(){
     for(var j=0;j<count;j++){
         text[j].style.color="#39FF14";
     }
-    for(var j=count;j<3;j++){
+    for(var j=count;j<levels[i].lev.length;j++){
         text[j].style.color="red";
     }
 }
