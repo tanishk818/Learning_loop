@@ -1,73 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" media="screen and (min-width: 900px)" href="arrow.css">
-        <link rel="stylesheet" media="screen and (max-width: 900px)" href="small_arrow.css">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Special+Elite');
-
-            
-.quote {
-	font-family: 'Special Elite', cursive;
-	background: #fffdf5;
-	color: #3f3f5a;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-.btn-primary{
-    float: left;
-}
-.btn-success{
-    float:right;
-}
-.btn-danger{
-    float:right;
-}
-blockquote {
-	font-weight: 100;
-	font-size: 2rem;
-	max-width: 600px;
-	line-height: 1.4;
-	position: relative;
-	margin: 0;
-	padding: .5rem;
-}
-
-blockquote:before,
-blockquote:after {
-	position: absolute;
-	color: #f1efe6;
-	font-size: 8rem;
-	width: 4rem;
-	height: 4rem;
-}
-
-blockquote:before {
-	content: '“';
-	left: -5rem;
-	top: -2rem;
-}
-
-blockquote:after {
-	content: '”';
-	right: -5rem;
-	bottom: 1rem;
-}
-
-cite {
-	line-height: 3;
-	text-align: left;
-}
-        </style>
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
    <!-- win_modal -->
         <div id="winModal" class="modal fade" role="dialog">
@@ -77,15 +8,15 @@ cite {
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <img src="win.jpeg" class="img-fluid" >
+                                <img src="/img/win.jpeg" class="img-fluid" >
                             </div>
                         </div>
                         <div class="quote">
                             <blockquote>Winning solves everything.</blockquote>
                             
                         </div>
-                        <a class="btn btn-primary" href="index.html" role="button">Home</a>
-                       <a class="btn btn-success" href="lev3.html" role="button">Next Level</a>
+                        <a class="btn btn-primary" href="/" role="button">Home</a>
+                       <a class="btn btn-success" href="/lev/3" role="button">Next Level</a>
                         
                     </div>
                 </div>
@@ -98,42 +29,26 @@ cite {
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <img src="loss.jpeg" class="img-fluid" >
+                                <img src="/img/loss.jpeg" class="img-fluid" >
                             </div>
                         </div>
                         <div class="quote">
                             <blockquote>Winning provides happiness.Loosing provides wisdom</blockquote>
                             
                         </div>
-                        <a class="btn btn-primary" href="index.html" role="button">Home</a>
-                       <a class="btn btn-danger" href="lev2.html" role="button">Try Again</a>
+                        <a class="btn btn-primary" href="/" role="button">Home</a>
+                       <a class="btn btn-danger" href="/lev/2" role="button">Try Again</a>
                         
                     </div>
                 </div>
             </div>
         </div>
-<!--radius=40 distance between two circle=30 -->
-
+        <!--radius=40 distance between two circle=30 -->
         <!--radius=40 distance between two circle=30 -->
         
             <div class="screen monitor">
-                
                 <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
-                <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feComponentTransfer in=SourceAlpha>
-                        <feFuncA type="table" tableValues="1 0" />
-                    </feComponentTransfer>
-                    <feGaussianBlur stdDeviation="4"/>
-                    <feOffset dx="0" dy="5" result="offsetblur"/>
-                    <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
-                    <feComposite in2="offsetblur" operator="in"/>
-                    <feComposite in2="SourceAlpha" operator="in" />
-                    <feMerge>
-                        <feMergeNode in="SourceGraphic" />
-                        <feMergeNode />
-                    </feMerge>
-                </filter>
-               
+                <%- include('./partials/mac_window.ejs') %> 
                 <circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
                 <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
                 <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
@@ -170,29 +85,17 @@ cite {
                 <p></p>
                </div>
             </div>
-       
-        <div class="keys">
-            <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>
-            <br />
-            <div class="left arr " onclick="LeftMove()" ><i class="fa fa-arrow-left"></i></div>
-            <div class="down arr" onclick="DownMove()"><i class="fa fa-arrow-down"></i></div>
-            <div class="right arr" onclick="RightMove()"><i class="fa fa-arrow-right"></i></div>
-        </div>
+          <%- include('./partials/key.ejs')  %> 
+        
 
         <!--<div class="container">
         <div class="bar bar1"></div>
         <div class="ball"></div>
         <div class="bar bar2"></div>
-    </div>-->
+        </div>-->
 
         <!-- keys end -->
- <script src="anime.min.js"></script>
- 
- <script src='THREEx.KeyboardState.js'></script>
- 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+ <%- include('./partials/script.ejs')  %> 
 <script>
      var i=1;
 var count=0;
@@ -355,132 +258,6 @@ function Idle()
   
 }
 
-function RightMove() {
- 
-  myMusic = new sound("Drip.wav");
-  myMusic.play();
-value.x =+ document.getElementsByTagName("circle")[15].getAttribute("cx"); 
-  temp =+ document.getElementsByTagName("circle")[15].getAttribute("cx")+ +110; 
- check(1);
- print();
- if (temp >= 380)
- {
-     temp = 50;
- }
-
- anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-            document.getElementsByTagName("circle")[15].setAttribute("cx",value.x);
-          
-         
-      
-      },
-  easing: 'easeInOutSine'
-});
- 
-
-}
-function LeftMove()
-{
-  
-  temp =document.getElementsByTagName("circle")[15].getAttribute("cx");
-
-  myMusic = new sound("Drip.wav");
-  myMusic.play();
-
-  value.x = document.getElementsByTagName("circle")[15].getAttribute("cx"); 
-  temp = temp -110;
-  check(-1);
-  print();
-  if (temp <0)
-  {
-    temp = 270
-  }
-
-  anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-          console.log("SS" + value.x);
-       
-            document.getElementsByTagName("circle")[15].setAttribute("cx",value.x);
-          
-  
-     
-      },
-  easing: 'easeInOutSine'
-});
-}
-
-function DownMove()
-{
-  temp =document.getElementsByTagName("circle")[15].getAttribute("cy");
-
-  myMusic = new sound("InvalidMove.wav");
-  myMusic.play();
-
-  value.x = document.getElementsByTagName("circle")[15].getAttribute("cy"); 
-  temp =+ document.getElementsByTagName("circle")[15].getAttribute("cy")+ +110; 
-  
-  check(-2);
-  print();
- 
-  
-  anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-         
-       
-            document.getElementsByTagName("circle")[15].setAttribute("cy",value.x);
-          
-          
-       
-     
-      },
-  easing: 'easeInOutSine'
-});
-}
-
-function UpMove()
-{
-  temp = document.getElementsByTagName("circle")[15].getAttribute("cy");
-
-  myMusic = new sound("InvalidMove.wav");
-  myMusic.play();
-  
-  value.x = document.getElementsByTagName("circle")[15].getAttribute("cy"); 
-  temp =+ document.getElementsByTagName("circle")[15].getAttribute("cy") - 110; 
-  check(2);
-  print();
-  
- 
-  anime({
-  targets: value,
-  x: temp,
-  duration: 300,
-  autoplay: true,
-  update: function(){
-         
-       
-            document.getElementsByTagName("circle")[15].setAttribute("cy",value.x);
-          
-         
-       
-     
-      },
-  easing: 'easeInOutSine'
-});
-
-}
 function check(x){
   if(levels[i].lev[count++]===x){
     console.log("count : "+count);

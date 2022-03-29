@@ -1,0 +1,327 @@
+<%- include('./partials/head.ejs') %>
+    <body>
+        <!-- win_modal -->
+        <div id="winModal" class="modal fade" role="dialog">
+            <div class="modal-dialog " role="content">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <img src="/img/win.jpeg" class="img-fluid" >
+                            </div>
+                        </div>
+                        <div class="quote">
+                            <blockquote>Winning solves everything.</blockquote>
+
+                        </div>
+                        <a class="btn btn-primary" href="/" role="button">Home</a>
+                        <a class="btn btn-success" href="#" role="button">Next Level</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="lossModal" class="modal fade" role="dialog">
+            <div class="modal-dialog " role="content">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <img src="/img/loss.jpeg" class="img-fluid" >
+                            </div>
+                        </div>
+                        <div class="quote">
+                            <blockquote>Winning provides happiness.Loosing provides wisdom</blockquote>
+
+                        </div>
+                        <a class="btn btn-primary" href="/" role="button">Home</a>
+                       <a class="btn btn-danger" href="/lev/5" role="button">Try Again</a>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--radius=40 distance between two circle=30 -->
+
+        <!--radius=40 distance between two circle=30 -->
+
+        <div class="screen monitor">
+
+            <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
+            <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feComponentTransfer in=SourceAlpha>
+                    <feFuncA type="table" tableValues="1 0" />
+                </feComponentTransfer>
+                <feGaussianBlur stdDeviation="4"/>
+                <feOffset dx="0" dy="5" result="offsetblur"/>
+                <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
+                <feComposite in2="offsetblur" operator="in"/>
+                <feComposite in2="SourceAlpha" operator="in" />
+                <feMerge>
+                    <feMergeNode in="SourceGraphic" />
+                    <feMergeNode />
+                </feMerge>
+            </filter>
+            
+            <circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
+            
+            <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+            <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+
+            <circle  cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
+            <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+            <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+            <circle  cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
+            <circle cx="160" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+            <circle cx="270" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+            <circle  cx="50" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
+            <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+            <circle cx="270" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+            <circle  cx="50" cy="490" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
+            <circle cx="160" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+            <circle cx="270" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+            <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
+            </svg>
+            <div class="t" style="color:red;">
+                
+                <p style="margin-top: 55px;">repeat(5) { </p>
+                <p style="text-indent: 50%;"></p>
+                <p> } </p>
+               
+                
+                
+                
+            </div>
+        </div>
+
+        <div class="keys">
+            <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>
+            <br />
+            <div class="left arr " onclick="LeftMove()" ><i class="fa fa-arrow-left"></i></div>
+            <div class="down arr" onclick="DownMove()"><i class="fa fa-arrow-down"></i></div>
+            <div class="right arr" onclick="RightMove()"><i class="fa fa-arrow-right"></i></div>
+        </div>
+
+        <!--<div class="container">
+        <div class="bar bar1"></div>
+        <div class="ball"></div>
+        <div class="bar bar2"></div>
+    </div>-->
+
+        <!-- keys end -->
+        <script src="/js/anime.min.js"></script>
+
+        <script src='/js/THREEx.KeyboardState.js'></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="/js/main.js"></script>
+        <script>
+                        var i = 3;
+                        var count = 0;
+                        var visibilityKey = [{
+                                x: 0,
+                            },
+                            {
+                                y: "visible"
+                            },
+                            {
+                                y: "hidden"
+                            }];
+
+                        var levels = [
+                            {
+                                lev: [1, 1, 1],
+                            },
+                            {
+                                lev: [-2, -2, -2, -2, 1, 1, 2, 2, 2, 2, 1, 1]
+                            },
+                            {
+                                lev: [1, -2, 1, -2, -1, -2, 1, -2, -2, 1]
+                            },
+                            {
+                                lev: [1],
+                                win: [1,1,1,1,1]
+                            }
+                        ];
+                        print();
+                        var temp;
+                        var keyVisible = 1;
+                        var keyCount = 1;
+                        var radiusvalue = {}
+                        var value = {}
+                        // value.x = document.getElementsByTagName("circle")[3].getAttribute("cx")
+                        var t1 = anime.timeline({
+                            easing: 'easeOutElastic(1, .8)',
+                            autoplay: true,
+                            loop: true,
+                            duration: 4000
+                        });
+                        var t2 = anime.timeline({
+                            easing: 'easeOutElastic(1, .8)',
+                            autoplay: true,
+                            loop: true,
+                            duration: 4000
+                        });
+        //Init();
+
+                        Idle();
+                        document.addEventListener("keydown", onDocumentKeyDown, false);
+                        function onDocumentKeyDown(event) {
+                            var keyCode = event.which;
+                            // up
+                            if (keyCode == 87) {
+                                UpMove()
+                                // down
+                            } else if (keyCode == 83) {
+                                DownMove()
+                                // left
+                            } else if (keyCode == 65) {
+                                LeftMove();
+                                // right
+                            } else if (keyCode == 68) {
+                                RightMove();
+                                // space
+                            } else if (keyCode == 32) {
+
+                            } else {
+                                Idle();
+                            }
+
+                        }
+                        ;
+
+                        function Init() {
+                            t2.add({
+                                targets: visibilityKey,
+
+                                duration: 10000,
+                                easing: 'linear',
+                                autoplay: true,
+                                loop: true,
+                                update: function () {
+                                    //if (keyVisible == 1 || keyVisible == 2)
+                                    // {
+                                    document.getElementsByClassName("right arr")[0].firstChild.style.visibility = visibilityKey[keyCount].y;
+
+                                    //}
+
+                                    keyVisible++;
+                                    if (keyVisible == 0)
+                                    {
+                                        keyVisible = 1;
+                                    }
+                                    if (keyVisible == 20 && keyCount == 1)
+                                    {
+                                        keyVisible = 2;
+                                        keyCount = 2;
+                                    }
+                                    if (keyVisible == 20 && keyCount == 2)
+                                    {
+                                        keyVisible = 1;
+                                        keyCount = 1;
+
+                                    }
+
+
+
+                                },
+                                complete: function () {}
+
+
+
+                            });
+                            t2.play();
+                        }
+                        function sound(src) {
+                            this.sound = document.createElement("audio");
+                            this.sound.src = src;
+                            this.sound.setAttribute("preload", "auto");
+                            this.sound.setAttribute("controls", "none");
+                            this.sound.style.display = "none";
+                            document.body.appendChild(this.sound);
+                            this.play = function () {
+                                this.sound.play();
+                            }
+                            this.stop = function () {
+                                this.sound.pause();
+                            }
+                        }
+                        function Idle()
+                        {
+
+                            radiusvalue.x = document.getElementsByTagName("circle")[15].getAttribute("r");
+                            t1.add({
+                                targets: radiusvalue,
+                                keyframes: [
+
+                                    {x: 25},
+                                    {x: 20}
+                                ],
+
+                                duration: 1000,
+                                easing: 'linear',
+                                autoplay: true,
+                                loop: true,
+                                update: function () {
+
+
+                                    document.getElementsByTagName("circle")[15].setAttribute("r", radiusvalue.x);
+
+
+                                },
+                                complete: function () {}
+
+
+
+                            });
+                            t1.play();
+
+                        }
+
+                        
+                        function check(x) {
+                            if (levels[i].win[count++] === x) {
+                                console.log("count : " + count);
+                            } else {
+                                count = 0;
+                                value.x = 50;
+                                temp = 50;
+                                console.log("count : " + count);
+                                console.log("you hit the wrong key");
+                                document.getElementsByTagName("circle")[15].setAttribute("cx", value.x);
+                                document.getElementsByTagName("circle")[15].setAttribute("cy", value.x);
+                                $('#lossModal').modal('show');
+                            }
+                            if (count === levels[i].win.length) {
+                                count = 0;
+                                console.log("you win the level");
+                                $('#winModal').modal('show');
+                                //alert("can't stop the champion!bravo! you win the level");
+                            }
+                        }
+                        function print() {
+                            var text = document.getElementsByTagName("p");
+                            console.log(levels);
+                            for (var j = 0,k=0; j < levels[i].lev.length; j++,k++) {
+                                var empt = text[k].innerHTML;
+                                console.log(empt);
+                                if(empt.length>0) k++;
+                                if (levels[i].lev[j] === 1)
+                                    text[k].textContent = "right()";
+                                else if (levels[i].lev[j] === -1)
+                                    text[k].textContent = "left()";
+                                else if (levels[i].lev[j] === 2)
+                                    text[k].textContent = "up()";
+                                else
+                                    text[k].textContent = "down()";
+                            }
+                            
+                        }
+        </script>
+    </body>
+

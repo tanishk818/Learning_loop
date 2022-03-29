@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" media="screen and (min-width: 900px)" href="arrow.css">
-        <link rel="stylesheet" media="screen and (max-width: 900px)" href="small_arrow.css">
+        <link rel="stylesheet" media="screen and (min-width: 900px)" href="/css/arrow.css">
+        <link rel="stylesheet" media="screen and (max-width: 900px)" href="/css/small_arrow.css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         
         <!-- Bootstrap CSS -->
@@ -21,6 +21,15 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+.dot {
+  height: 20px;
+  width: 20px;
+  margin-left: 15px;
+  margin-top: 60px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
 }
 .btn-primary{
     float: left;
@@ -66,23 +75,5 @@ cite {
 	line-height: 3;
 	text-align: left;
 }
-.screen {
-    background:black;
-    color:floralwhite;
-}
         </style>
 </head>
-<body>
-            <div class="screen monitor">
-                <p>
-                <h1>WELCOME!</h1><br>
-                    To our game.
-                </p>
-            </div>
-    <script>
-         setTimeout(function(){
-            window.location.href = 'lev1.html';
-         }, 5000);
-      </script>
-</body>
-</html>
