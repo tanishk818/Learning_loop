@@ -2,41 +2,35 @@ const express=require('express');
 const router=express.Router();
 const User=require('../models/user');
 const passport = require('passport');
-
+const {isAdmin} =require('../middleware');
 const mongoose = require('mongoose');
 const { userSchema,LoginSchema } = require('../Schema.js');
 const nodemailer = require("nodemailer");
 async function main() {
-   // Generate test SMTP service account from ethereal.email
-   // Only needed if you don't have a real mail account for testing
-   let testAccount = await nodemailer.createTestAccount();
- 
-   // create reusable transporter object using the default SMTP transport
-   let transporter = nodemailer.createTransport({
-     host: "smtp.ethereal.email",
-     port: 587,
-     secure: false, // true for 465, false for other ports
-     auth: {
-       user: testAccount.user, // generated ethereal user
-       pass: testAccount.pass, // generated ethereal password
-     },
+   var transport = nodemailer.createTransport({
+      host: "smtp.mailtrap.io",
+      port: 2525,
+      auth: {
+        user: "9d225d8ece525c",
+        pass: "a7f60638bb35ce"
+      }
+    });
+   var mailOptions = {
+         from: "tanishk145@gmail.com",
+         to: "tanishkagarwal818@gmal.com",
+         subject: "Subject",
+         text: "Hello SMTP Email"
+   };
+
+   transport.sendMail(mailOptions, function(err, info){
+       transport.close();
+       if(err) {
+           callback(err, info);
+       }
+       else {
+           callback(null, info);
+       }
    });
- 
-   // send mail with defined transport object
-   let info = await transporter.sendMail({
-     from: '"Fred Foo 👻" <tanishk145@gmail.com>', // sender address
-     to: "tanishkagarwal818@gmail.com", // list of receivers
-     subject: "Hello ✔", // Subject line
-     text: "Hello world?", // plain text body
-     html: "<b>Hello world?</b>", // html body
-   });
- 
-   console.log("Message sent: %s", info.messageId);
-   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
- 
-   // Preview only available when sending through an Ethereal account
-   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
  }
 
 const validate = (req, res, next) => {
@@ -60,8 +54,25 @@ const loginValidate = (req, res, next) => {
    }
 }
 router.get("/",(req,res)=>{
-   main().catch(console.error)
    res.render('index.ejs')
+})
+router.get("/level",(req,res)=>{
+   res.send("level page")
+})
+router.get("/help",(req,res)=>{
+   res.render('contact.ejs')
+})
+
+router.get("/admin",isAdmin,async(req,res)=>{
+   let noOfLevels=5;
+   let users=await User.find({});
+   
+   if(req.user.username=="admin")
+   res.render("admin.ejs",{users,noOfLevels});
+   else{
+      req.flash('error','you must be log in as an admin to access the admin site');
+      res.redirect('/lev/1');
+   }
 })
 router.get('/login',(req,res)=>{
    res.render('login.ejs')
@@ -76,14 +87,19 @@ router.post('/Signup',validate,async(req,res,next)=>{
         res.redirect('/login')
     } else {
         // Insert the new user if they do not exist yet
+        let maxLevel="0"
         try{
+          
          const {username,email,password}=req.body;
-         const user=new User({email,username});
+         const user=new User({email,maxLevel,username});
          const registeredUser =await User.register(user,password);
          req.login(registeredUser,err =>{
+         
           if(err) return next(err);
+          console.log(req.registeredUser);
           req.flash('success','welcome to Learning Loop');
           res.redirect('/lev/1');
+        
         })
       }
         catch(e){
@@ -95,8 +111,12 @@ router.post('/Signup',validate,async(req,res,next)=>{
    })
    
    router.post('/login',passport.authenticate('local',{failureFlash:true,failureRedirect:'/login'}),(req,res)=>{
-      req.flash('success','welcome back!');
-      const redirectUrl=req.session.returnTo || '/lev/1';
+      req.flash('success','welcome back!'+req.user.username);
+      var redirectUrl;
+      if(req.user.username=="admin")
+      redirectUrl='/admin';
+      else
+      redirectUrl='/lev/1';
       delete req.session.returnTo;
       res.redirect(redirectUrl);
   })

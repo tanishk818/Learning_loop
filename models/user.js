@@ -9,6 +9,9 @@ const userScehma=new Schema({
         type:String,
         required:true,
         unique:true
+    },
+    maxLevel:{
+        type:String
     }
     
 });
