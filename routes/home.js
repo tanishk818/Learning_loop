@@ -6,33 +6,39 @@ const {isAdmin} =require('../middleware');
 const mongoose = require('mongoose');
 const { userSchema,LoginSchema } = require('../Schema.js');
 const nodemailer = require("nodemailer");
-async function main() {
-   var transport = nodemailer.createTransport({
-      host: "smtp.mailtrap.io",
-      port: 2525,
-      auth: {
-        user: "9d225d8ece525c",
-        pass: "a7f60638bb35ce"
-      }
-    });
-   var mailOptions = {
-         from: "tanishk145@gmail.com",
-         to: "tanishkagarwal818@gmal.com",
-         subject: "Subject",
-         text: "Hello SMTP Email"
-   };
+const { encrypt, decrypt } = require('../crypto');
 
-   transport.sendMail(mailOptions, function(err, info){
-       transport.close();
-       if(err) {
-           callback(err, info);
-       }
-       else {
-           callback(null, info);
-       }
-   });
- }
+async function sEmail(email,username){
+const d = new Date();
+var str=email+"@#$"+d+"@#$"+username;
+var tab=encrypt(Buffer.from(str, 'utf8'));
+console.log(tab)
+var link="http://localhost:3000/resetPassword/"+tab.iv+"/"+tab.content;
+console.log();
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'info.learningloop@gmail.com',
+    pass: 'Learn@123' // naturally, replace both with your real credentials or an application-specific password
+  }
+});
 
+const mailOptions = {
+  from: 'info.learningloop@gmail.com',
+  to: email,
+  subject: 'Invoices due',
+  html: '<p>Click <a href="' + link + '">here</a> to reset your password</p>'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+	console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
+}  
 const validate = (req, res, next) => {
    const { error } = userSchema.validate(req.body);
    console.log(error)
@@ -66,7 +72,7 @@ router.get("/help",(req,res)=>{
 router.get("/admin",isAdmin,async(req,res)=>{
    let noOfLevels=5;
    let users=await User.find({});
-   
+   console.log(req.user);
    if(req.user.username=="admin")
    res.render("admin.ejs",{users,noOfLevels});
    else{
@@ -121,12 +127,46 @@ router.post('/Signup',validate,async(req,res,next)=>{
       res.redirect(redirectUrl);
   })
   
+  router.post('/reset',async(req,res)=>{
+   let oldUser = await User.findOne({ email: req.body.email });
+   console.log(oldUser);
+    if (oldUser) {
+         console.log(req.user);
+         sEmail(req.body.email,oldUser.username);
+         req.flash('success','reset Link set')
+         res.redirect('/login')
+    }
+    else{
+       req.flash('error','you are not registered yet')
+       res.redirect('/login');
+    }
+  })
   router.get('/logout',(req,res)=>{
    req.logOut();
    req.flash('success','successfully logout');
    res.redirect('/login');
 })
 
+
+
+router.get('/resetPassword/:iv/:encryptedData',async(req,res)=>{
+   console.log(req.params.encryptedData)
+   
+   var text={
+      iv: req.params.iv,
+      content: req.params.encryptedData
+   }
+   
+   var str=decrypt(text);
+   var email=str.split("@#$")[0];
+   var username=str.split("@#$")[2];
+   let user = await User.findOne({ email: email });
+   user.setPassword("Hello@123",(err,user)=>{
+      user.save()
+      console.log(user)
+   });
+   res.redirect('/login')
+})
 
 
 
