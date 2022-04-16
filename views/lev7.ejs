@@ -86,21 +86,15 @@
             <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
             </svg>
             <div class="t" style="color:red;">
-                <p></p>
                 <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
+                    <p>repeat (3) { </p>
+                    <p style="text-indent: 50%;"></p>
+                    <p> } </p>
+                    <p>repeat (3) { </p>
+                    <p style="text-indent: 50%;"></p>
+                    <p> } </p>
+                    <p></p>
                 <p> } </p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p></p>
-                
                 
                 
                 
@@ -135,7 +129,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="/js/main.js"></script>
         <script>
-                        var i = 4;
+                        var i = 6;
                         var count = 0;
                         var visibilityKey = [{
                                 x: 0,
@@ -148,7 +142,7 @@
                             }];
 
                         var levels = [
-                            {
+                        {
                                 lev: [1, 1, 1],
                             },
                             {
@@ -164,7 +158,15 @@
                             {
                                 lev: [1,2,1,-2,-1,1],
                                 win: [1,2,2,2,2,2,1,1,1,1,1,-2,-2,-2,-2,-2,-1,-1,-1,-1,-1,1]
-                            }
+                            },
+                            {
+                                lev: [1,-2],
+                                win: [1,1,1,-2,1,1,1,-2,1,1,1,-2,1,1,1,-2,1,1,1,-2]
+                            },
+                            {
+                                lev: [1,-1,2],
+                                win: [1,1,1,-1,-1,-1,2,1,1,1,-1,-1,-1,2,1,1,1,-1,-1,-1,2,1,1,1,-1,-1,-1,2,1,1,1,-1,-1,-1,2]
+                            },
                         ];
                         print();
                         var temp;

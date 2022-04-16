@@ -36,6 +36,29 @@ router.get('/2',isLoggedIn,async (req,res)=>{
     // res.sendFile(path.join(__dirname+'/lev1.html'));
     res.render('lev5.ejs')
  });
-
+ router.get('/6',isLoggedIn,async (req,res)=>{
+   let user=await User.find({username:req.user.username});
+   updateMaxLevel("5",user);
+    // res.sendFile(path.join(__dirname+'/lev1.html'));
+    res.render('lev6.ejs')
+ });
+ router.get('/7',isLoggedIn,async (req,res)=>{
+   let user=await User.find({username:req.user.username});
+   updateMaxLevel("6",user);
+    // res.sendFile(path.join(__dirname+'/lev1.html'));
+    res.render('lev7.ejs')
+ });
+ router.get('/8',isLoggedIn,async (req,res)=>{
+   let user=await User.find({username:req.user.username});
+   updateMaxLevel("7",user);
+    // res.sendFile(path.join(__dirname+'/lev1.html'));
+    res.render('lev8.ejs')
+ });
+ router.get('/9',isLoggedIn,async (req,res)=>{
+   let user=await User.find({username:req.user.username});
+   updateMaxLevel("8",user);
+    // res.sendFile(path.join(__dirname+'/lev1.html'));
+    res.render('lev9.ejs')
+ });
 module.exports=router;
 
