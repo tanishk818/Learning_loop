@@ -47,69 +47,77 @@
         <!--radius=40 distance between two circle=30 -->
 
         <!--radius=40 distance between two circle=30 -->
-
-        <div class="screen monitor">
-
-            <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
-            <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feComponentTransfer in=SourceAlpha>
-                    <feFuncA type="table" tableValues="1 0" />
-                </feComponentTransfer>
-                <feGaussianBlur stdDeviation="4"/>
-                <feOffset dx="0" dy="5" result="offsetblur"/>
-                <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
-                <feComposite in2="offsetblur" operator="in"/>
-                <feComposite in2="SourceAlpha" operator="in" />
-                <feMerge>
-                    <feMergeNode in="SourceGraphic" />
-                    <feMergeNode />
-                </feMerge>
-            </filter>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto ">
+                    <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
+                        <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feComponentTransfer in=SourceAlpha>
+                                <feFuncA type="table" tableValues="1 0" />
+                            </feComponentTransfer>
+                            <feGaussianBlur stdDeviation="4"/>
+                            <feOffset dx="0" dy="5" result="offsetblur"/>
+                            <feFlood flood-color="rgb(0, 0, 0)" result="color"/>
+                            <feComposite in2="offsetblur" operator="in"/>
+                            <feComposite in2="SourceAlpha" operator="in" />
+                            <feMerge>
+                                <feMergeNode in="SourceGraphic" />
+                                <feMergeNode />
+                            </feMerge>
+                        </filter>
+                        
+                        <circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
+                        
+                        <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+                        <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
             
-            <circle  cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
-            
-            <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-            <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-
-            <circle  cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
-            <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-            <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-            <circle  cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
-            <circle cx="160" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-            <circle cx="270" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-            <circle  cx="50" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
-            <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
-            <circle cx="270" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-            <circle  cx="50" cy="490" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
-            <circle cx="160" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-            <circle cx="270" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
-            <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
-            </svg>
-            <div class="t" style="color:red;">
-                <p></p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p>repeat (5) { </p>
-                <p style="text-indent: 50%;"></p>
-                <p> } </p>
-                <p></p>
+                        <circle  cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
+                        <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+                        <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+                        <circle  cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#FDD20E"   filter="url(#inset-shadow)" />
+                        <circle cx="160" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+                        <circle cx="270" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+                        <circle  cx="50" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
+                        <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"  filter="url(#inset-shadow)" />
+                        <circle cx="270" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+                        <circle  cx="50" cy="490" r="40" stroke="black" stroke-width="3" fill="#F76C6C"   filter="url(#inset-shadow)" />
+                        <circle cx="160" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+                        <circle cx="270" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"  filter="url(#inset-shadow)" />
+                        <circle  cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white"  filter="url(#inset-shadow)"  />
+                        </svg>
+                </div>
+            <div class="col-6 mx-auto">
                 
-                
-                
-                
+                    <p></p>
+                    <p>repeat (5) { </p>
+                    <p ></p>
+                    <p> } </p>
+                    <p>repeat (5) { </p>
+                    <p ></p>
+                    <p> } </p>
+                    <p>repeat (5) { </p>
+                    <p ></p>
+                    <p> } </p>
+                    <p>repeat (5) { </p>
+                    <p ></p>
+                    <p> } </p>
+                    <p></p>
+                    
+                    
+                    
+                    
+                   
+                    
+                    
+                    
                
-                
-                
-                
+            </div>
             </div>
         </div>
+        
+
+        
+            
 
         <div class="keys">
             <div class="up arr" onclick="UpMove()"><i class="fa fa-arrow-up"></i></div>

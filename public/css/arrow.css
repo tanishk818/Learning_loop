@@ -45,10 +45,11 @@ html {
     margin: 1px;
     clear: right;
     top:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 p{             
                 font-size: 20px;
-                font-family: 'Special Elite', cursive;
+                font-family: "Monaco", "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
                 font-style: italic;
                 font-weight: 20px;
                 margin:0px;

@@ -81,7 +81,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/level", isLoggedIn, (req, res) => {
-   res.send("level page")
+   res.render('lev.ejs')
 })
 
 router.get("/help", (req, res) => {
@@ -145,7 +145,7 @@ router.post('/Signup', validate, async (req, res, next) => {
       if(req.user.username=="admin")
       redirectUrl='/admin';
       else
-      redirectUrl='/lev/1';
+      redirectUrl='/level';
       delete req.session.returnTo;
       res.redirect(redirectUrl);
   })
@@ -173,6 +173,22 @@ router.post('/Signup', validate, async (req, res, next) => {
 /*   }
 
 })*/
+router.post('/resetPassword/:iv/:encryptedData',async(req,res)=>{
+   var text={
+      iv: req.params.iv,
+      content: req.params.encryptedData
+   }
+   var str=decrypt(text);
+   var email=str.split("@#$")[0];
+   var username=str.split("@#$")[2]
+   let user = await User.findOne({ email: email });
+   user.setPassword(req.body.password,(err,user)=>{
+      user.save()
+      console.log(user)
+   });
+   req.flash('success','Password reset successfully')
+   res.redirect('/login')
+})
 
 router.get('/resetPassword/:iv/:encryptedData',async(req,res)=>{
    console.log(req.params.encryptedData)
@@ -185,12 +201,8 @@ router.get('/resetPassword/:iv/:encryptedData',async(req,res)=>{
    var str=decrypt(text);
    var email=str.split("@#$")[0];
    var username=str.split("@#$")[2];
-   let user = await User.findOne({ email: email });
-   user.setPassword("Hello@123",(err,user)=>{
-      user.save()
-      console.log(user)
-   });
-   res.redirect('/login')
+   res.render('forgotPass.ejs',{username,email,text});
+   
 })
 
 

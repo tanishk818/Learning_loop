@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Learning Loop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link  href="css/index.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    </head>
+    <body>
+        <!--<span>&#8734;</span>-->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/"><img  src="img/learnig_loop_logo2.jpeg"  width="50" height="50" ></a>
+            
+            <div  id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a data-toggle="tooltip" data-placement="top" title="Click here to know about us!" id="Modallink" class="nav-link" >About Us <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a data-toggle="tooltip" data-placement="top" title="Click here to know about us!" id="Modallink" class="nav-link" >Levels <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a data-toggle="tooltip" data-placement="top" title="Click here to know about us!" id="Modallink" class="nav-link" >Help <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active" >
+                        <a data-toggle="tooltip" data-placement="top" title="Click here to know about us!" id="Modallink" class="nav-link" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                          </svg><span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+        
+            </div>
+        </nav>
+        
+       
+        <!-- about us modal -->
+        <!-- login_modal -->
+        <div id="Modal" class="modal fade" role="dialog">
+            <div class="modal-dialog " role="content">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">About</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <p>This is a game</p>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal ends here -->
+        <div class="container">
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script>
+            $('#Modallink').click(function () {
+                $('#Modal').modal('show');
+            });
+            $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+        </script>
+    </body>
+</html>

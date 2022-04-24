@@ -64,7 +64,7 @@
                         {
                             temp = document.getElementsByTagName("circle")[15].getAttribute("cy");
 
-                            myMusic = new sound("/InvalidMove.wav");
+                            myMusic = new sound("/Drip.wav");
                             myMusic.play();
 
                             value.x = document.getElementsByTagName("circle")[15].getAttribute("cy");
@@ -99,7 +99,7 @@
                         {
                             temp = document.getElementsByTagName("circle")[15].getAttribute("cy");
 
-                            myMusic = new sound("/InvalidMove.wav");
+                            myMusic = new sound("/Drip.wav");
                             myMusic.play();
 
                             value.x = document.getElementsByTagName("circle")[15].getAttribute("cy");
