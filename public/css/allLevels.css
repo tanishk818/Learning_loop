@@ -1,0 +1,21 @@
+body {
+  overflow-y: scroll;
+}
+.level-link {
+  text-decoration: none;
+  color: black;
+}
+.level-link:hover {
+  text-decoration: none;
+  color: black;
+}
+.description {
+  display: none;
+}
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  transform: scale(1.05);
+}
+.card:hover .description {
+  display: inherit;
+}

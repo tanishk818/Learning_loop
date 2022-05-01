@@ -7,64 +7,64 @@ const { userSchema } = require('../Schema.js');
 const nodemailer = require("nodemailer");
 const { encrypt, decrypt } = require('../crypto');
 
-async function sEmail(email,username){
-const d = new Date();
-var str=email+"@#$"+d+"@#$"+username;
-var tab=encrypt(Buffer.from(str, 'utf8'));
-console.log(tab)
-var link="http://localhost:3000/resetPassword/"+tab.iv+"/"+tab.content;
-console.log();
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'info.learningloop@gmail.com',
-    pass: 'Learn@123' // naturally, replace both with your real credentials or an application-specific password
-  }
-});
-
-const mailOptions = {
-  from: 'info.learningloop@gmail.com',
-  to: email,
-  subject: 'Invoices due',
-  html: '<p>Click <a href="' + link + '">here</a> to reset your password</p>'
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-	console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
-
-async function main() {
-   var transport = nodemailer.createTransport({
-      host: "smtp.mailtrap.io",
-      port: 2525,
+async function sEmail(email, username) {
+   const d = new Date();
+   var str = email + "@#$" + d + "@#$" + username;
+   var tab = encrypt(Buffer.from(str, 'utf8'));
+   console.log(tab)
+   var link = "http://localhost:3000/resetPassword/" + tab.iv + "/" + tab.content;
+   console.log();
+   const transporter = nodemailer.createTransport({
+      service: 'gmail',
       auth: {
-         user: "9d225d8ece525c",
-         pass: "a7f60638bb35ce"
+         user: 'info.learningloop@gmail.com',
+         pass: 'Learn@123' // naturally, replace both with your real credentials or an application-specific password
       }
    });
-   var mailOptions = {
-      from: "tanishk145@gmail.com",
-      to: "tanishkagarwal818@gmal.com",
-      subject: "Subject",
-      text: "Hello SMTP Email"
+
+   const mailOptions = {
+      from: 'info.learningloop@gmail.com',
+      to: email,
+      subject: 'Invoices due',
+      html: '<p>Click <a href="' + link + '">here</a> to reset your password</p>'
    };
 
-   transport.sendMail(mailOptions, function (err, info) {
-      transport.close();
-      if (err) {
-         callback(err, info);
-      }
-      else {
-         callback(null, info);
+   transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+         console.log(error);
+      } else {
+         console.log('Email sent: ' + info.response);
       }
    });
-}
 
-}  
+   async function main() {
+      var transport = nodemailer.createTransport({
+         host: "smtp.mailtrap.io",
+         port: 2525,
+         auth: {
+            user: "9d225d8ece525c",
+            pass: "a7f60638bb35ce"
+         }
+      });
+      var mailOptions = {
+         from: "tanishk145@gmail.com",
+         to: "tanishkagarwal818@gmal.com",
+         subject: "Subject",
+         text: "Hello SMTP Email"
+      };
+
+      transport.sendMail(mailOptions, function (err, info) {
+         transport.close();
+         if (err) {
+            callback(err, info);
+         }
+         else {
+            callback(null, info);
+         }
+      });
+   }
+
+}
 const validate = (req, res, next) => {
    const { error } = userSchema.validate(req.body);
    console.log(error)
@@ -80,8 +80,64 @@ router.get("/", (req, res) => {
    res.render('index.ejs')
 })
 
-router.get("/level", isLoggedIn, (req, res) => {
-   res.render('lev.ejs')
+router.get("/levels", isLoggedIn, (req, res) => {
+   let data = [
+      {
+         image: 'imagedata',
+         name: 'level 1',
+         url: '/lev/1',
+         description: 'pehli level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 2',
+         url: '/lev/2',
+         description: 'doosri level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 1',
+         url: '/lev/3',
+         description: 'pehli level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 2',
+         url: '/lev/4',
+         description: 'doosri level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 2',
+         url: '/lev/5',
+         description: 'doosri level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 1',
+         url: '/lev/6',
+         description: 'pehli level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 2',
+         url: '/lev/7',
+         description: 'doosri level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 1',
+         url: '/lev/8',
+         description: 'pehli level hai'
+      },
+      {
+         image: 'imagedata',
+         name: 'level 2',
+         url: '/lev/9',
+         description: 'doosri level hai'
+      },
+   ]
+   res.render('lev.ejs', { levelData: data })
 })
 
 router.get("/help", (req, res) => {
@@ -104,7 +160,7 @@ router.get('/login', (req, res) => {
    if (!req.isAuthenticated())
       res.render('login.ejs')
    else
-      res.redirect('/level')
+      res.redirect('/levels')
 })
 
 
@@ -135,74 +191,74 @@ router.post('/Signup', validate, async (req, res, next) => {
          req.flash('error', e.message);
          res.redirect('login');
       }
-      }
-      
-   })
-   
-   router.post('/login',passport.authenticate('local',{failureFlash:true,failureRedirect:'/login'}),(req,res)=>{
-      req.flash('success','welcome back!'+req.user.username);
-      var redirectUrl;
-      if(req.user.username=="admin")
-      redirectUrl='/admin';
-      else
-      redirectUrl='/level';
-      delete req.session.returnTo;
-      res.redirect(redirectUrl);
-  })
-  
-  router.post('/reset',async(req,res)=>{
+   }
+
+})
+
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
+   req.flash('success', 'welcome back!' + req.user.username);
+   var redirectUrl;
+   if (req.user.username == "admin")
+      redirectUrl = '/admin';
+   else
+      redirectUrl = '/levels';
+   delete req.session.returnTo;
+   res.redirect(redirectUrl);
+})
+
+router.post('/reset', async (req, res) => {
    let oldUser = await User.findOne({ email: req.body.email });
    console.log(oldUser);
-    if (oldUser) {
-         console.log(req.user);
-         sEmail(req.body.email,oldUser.username);
-         req.flash('success','reset Link set')
-         res.redirect('/login')
-    }
-    else{
-       req.flash('error','you are not registered yet')
-       res.redirect('/login');
-    }
-  })
-  router.get('/logout',(req,res)=>{
+   if (oldUser) {
+      console.log(req.user);
+      sEmail(req.body.email, oldUser.username);
+      req.flash('success', 'reset Link set')
+      res.redirect('/login')
+   }
+   else {
+      req.flash('error', 'you are not registered yet')
+      res.redirect('/login');
+   }
+})
+router.get('/logout', (req, res) => {
    req.logOut();
-   req.flash('success','successfully logout');
+   req.flash('success', 'successfully logout');
    res.redirect('/login');
 })
 
 /*   }
 
 })*/
-router.post('/resetPassword/:iv/:encryptedData',async(req,res)=>{
-   var text={
+router.post('/resetPassword/:iv/:encryptedData', async (req, res) => {
+   var text = {
       iv: req.params.iv,
       content: req.params.encryptedData
    }
-   var str=decrypt(text);
-   var email=str.split("@#$")[0];
-   var username=str.split("@#$")[2]
+   var str = decrypt(text);
+   var email = str.split("@#$")[0];
+   var username = str.split("@#$")[2]
    let user = await User.findOne({ email: email });
-   user.setPassword(req.body.password,(err,user)=>{
+   user.setPassword(req.body.password, (err, user) => {
       user.save()
       console.log(user)
    });
-   req.flash('success','Password reset successfully')
+   req.flash('success', 'Password reset successfully')
    res.redirect('/login')
 })
 
-router.get('/resetPassword/:iv/:encryptedData',async(req,res)=>{
+router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
    console.log(req.params.encryptedData)
-   
-   var text={
+
+   var text = {
       iv: req.params.iv,
       content: req.params.encryptedData
    }
-   
-   var str=decrypt(text);
-   var email=str.split("@#$")[0];
-   var username=str.split("@#$")[2];
-   res.render('forgotPass.ejs',{username,email,text});
-   
+
+   var str = decrypt(text);
+   var email = str.split("@#$")[0];
+   var username = str.split("@#$")[2];
+   res.render('forgotPass.ejs', { username, email, text });
+
 })
 
 

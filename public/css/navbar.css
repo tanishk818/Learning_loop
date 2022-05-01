@@ -1,0 +1,15 @@
+.navbar {
+  padding: 10px 25px;
+}
+.dropdown-toggle::after {
+  content: none;
+}
+.username-text {
+  color: red;
+}
+.navbar-div {
+  display: contents;
+}
+.profile-icon {
+  margin-left: auto;
+}
