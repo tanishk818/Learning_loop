@@ -9,7 +9,8 @@ body {
   transform: translate(-50%, -50%);
 }
 nav {
-  background-color: #def2f1;
+  background-color: rgba(0, 205, 172, 0.75)
+  ;
 }
 #Modallink {
   float: left;

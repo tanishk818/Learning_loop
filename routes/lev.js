@@ -10,56 +10,47 @@ var updateMaxLevel = async (level, user) => {
 }
 
 router.get('/1', isLoggedIn, async (req, res) => {
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
    res.render('All_Levels/level_1.ejs')
 });
 router.get('/2', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("1", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
    res.render('All_Levels/level_2.ejs')
 });
 router.get('/3', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("2", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev3.ejs')
+   res.render('All_Levels/level_3.ejs')
 });
 router.get('/4', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("3", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev4.ejs')
+   res.render('All_Levels/level_4.ejs')
 });
 router.get('/5', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("4", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev5.ejs')
+   res.render('All_Levels/level_5.ejs')
 });
 router.get('/6', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("5", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev6.ejs')
+   res.render('All_Levels/level_6.ejs')
 });
 router.get('/7', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("6", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev7.ejs')
+   res.render('All_Levels/level_7.ejs')
 });
 router.get('/8', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("7", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev8.ejs')
+   res.render('All_Levels/level_8.ejs')
 });
 router.get('/9', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("8", user);
-   // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev9.ejs')
+   res.render('All_Levels/level_9.ejs')
 });
 module.exports = router;
 

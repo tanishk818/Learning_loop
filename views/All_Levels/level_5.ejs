@@ -17,7 +17,7 @@
                 <blockquote>Winning solves everything.</blockquote>
               </div>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-success" href="3" role="button">Next Level!</a>
+              <a class="btn btn-success" href="6" role="button">Next Level!</a>
             </div>
           </div>
         </div>
@@ -36,74 +36,74 @@
                 <blockquote>Winning provides happiness.Loosing provides wisdom</blockquote>
               </div>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-danger" href="/lev/2" role="button">Try Again</a>
+              <a class="btn btn-danger" href="/lev/5" role="button">Try Again</a>
             </div>
           </div>
         </div>
       </div>
       <!-- This is the main content -->
-      <h2 class="level-no">Level 2</h2>
+      <h2 class="level-no">Level 5</h2>
       <div class="main-content">
 
         <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
           <%- include('../partials/mac_window.ejs') %>
             <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C" filter="url(#inset-shadow)" />
-            <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
+
+            <circle cx="160" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
 
-            <circle cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
-            <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
+            <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
             <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
-            <circle cx="160" cy="270" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
+            <circle cx="160" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
             <circle cx="270" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
             <circle cx="50" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
+            <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="270" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="270" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
             <circle cx="50" cy="490" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="160" cy="490" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="160" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
-            <circle cx="270" cy="490" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="270" cy="490" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
             <circle cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white" filter="url(#inset-shadow)" />
         </svg>
         <div class="code-steps code">
           <h3 class="code-heading">Instructions</h3>
           <p class="code-step"></p>
+          <p class="code-step">repeat (5) { </p>
           <p class="code-step"></p>
+          <p class="code-step"> } </p>
+          <p class="code-step">repeat (5) { </p>
           <p class="code-step"></p>
+          <p class="code-step"> } </p>
+          <p class="code-step">repeat (5) { </p>
           <p class="code-step"></p>
+          <p class="code-step"> } </p>
+          <p class="code-step">repeat (5) { </p>
           <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
-          <p class="code-step"></p>
+          <p class="code-step"> } </p>
           <p class="code-step"></p>
         </div>
       </div>
-      <%- include('../partials/key.ejs') %>
+      <!-- <%- include('../partials/key.ejs') %> -->
         <script src="/js/three.js"></script>
         <script src="/js/three.min.js"></script>
         <%- include('../partials/script.ejs') %>
           <script>
-            var i = 1;
+            var i = 4;
             var count = 0;
             var visibilityKey = [{
               x: 0,
@@ -119,9 +119,19 @@
               {
                 lev: [1, 1, 1],
               },
-
               {
-                lev: [-2, -2, -2, -2, 1, 1, 2, 2, 2, 2, 1]
+                lev: [-2, -2, -2, -2, 1, 1, 2, 2, 2, 2, 1, 1]
+              },
+              {
+                lev: [1, -2, 1, -2, -1, -2, 1, -2, -2, 1]
+              },
+              {
+                lev: [1, -1],
+                win: [1]
+              },
+              {
+                lev: [1, 2, 1, -2, -1, 1],
+                win: [1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, -2, -2, -2, -2, -2, -1, -1, -1, -1, -1, 1]
               }
             ];
             print();
@@ -130,7 +140,7 @@
             var keyCount = 1;
             var radiusvalue = {}
             var value = {}
-            let isPlaying = true;
+            let isPlaying = true
             // value.x = document.getElementsByTagName("circle")[3].getAttribute("cx")
             var t1 = anime.timeline({
               easing: 'easeOutElastic(1, .8)',
@@ -163,19 +173,16 @@
               } else if (keyCode == 39 && isPlaying) {
                 RightMove();
                 // space
-              }
-              else {
+              } else {
                 Idle();
               }
 
-            };
+            }
+            ;
 
             function Init() {
               t2.add({
                 targets: visibilityKey,
-
-
-
 
                 duration: 10000,
                 easing: 'linear',
@@ -237,8 +244,6 @@
                   { x: 20 }
                 ],
 
-
-
                 duration: 1000,
                 easing: 'linear',
                 autoplay: true,
@@ -259,11 +264,11 @@
 
             }
 
+
             function check(x) {
-              if (levels[i].lev[count++] === x) {
+              if (levels[i].win[count++] === x) {
                 console.log("count : " + count);
-              }
-              else {
+              } else {
                 count = 0;
                 value.x = 50;
                 temp = 50;
@@ -274,7 +279,7 @@
                 isPlaying = false
                 $('#lossModal').modal('show');
               }
-              if (count === levels[i].lev.length) {
+              if (count === levels[i].win.length) {
                 count = 0;
                 console.log("you win the level");
                 isPlaying = false
@@ -282,25 +287,28 @@
                 //alert("can't stop the champion!bravo! you win the level");
               }
             }
-            function print() {
+            function print() { //[1,2,1,-2,-1,1]
               var text = document.getElementsByClassName("code-step");
               console.log(levels);
-              for (var j = 0; j < levels[i].lev.length; j++) {
-                if (levels[i].lev[j] === 1)
-                  text[j].textContent = "right()";
-                else if (levels[i].lev[j] === -1)
-                  text[j].textContent = "left()";
-                else if (levels[i].lev[j] === 2)
-                  text[j].textContent = "up()";
-                else
-                  text[j].textContent = "down()";
+              for (var j = 0, k = 0; j < levels[i].lev.length;) {
+                var empt = text[k].innerHTML;
+                console.log(empt);
+                if (empt.length > 0) k++;
+                else {
+                  if (levels[i].lev[j] === 1)
+                    text[k].textContent = "right()";
+                  else if (levels[i].lev[j] === -1)
+                    text[k].textContent = "left()";
+                  else if (levels[i].lev[j] === 2)
+                    text[k].textContent = "up()";
+                  else
+                    text[k].textContent = "down()";
+                  j++;
+                  k++;
+                }
+
               }
-              for (var j = 0; j < count; j++) {
-                text[j].style.color = "#39FF14";
-              }
-              for (var j = count; j < levels[i].lev.length; j++) {
-                text[j].style.color = "red";
-              }
+
             }
           </script>
   </div>

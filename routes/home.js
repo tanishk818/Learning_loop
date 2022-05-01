@@ -83,55 +83,55 @@ router.get("/", (req, res) => {
 router.get("/levels", isLoggedIn, (req, res) => {
    let data = [
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 1',
          url: '/lev/1',
          description: 'pehli level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 2',
          url: '/lev/2',
          description: 'doosri level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 1',
          url: '/lev/3',
          description: 'pehli level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 2',
          url: '/lev/4',
          description: 'doosri level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 2',
          url: '/lev/5',
          description: 'doosri level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 1',
          url: '/lev/6',
          description: 'pehli level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 2',
          url: '/lev/7',
          description: 'doosri level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 1',
          url: '/lev/8',
          description: 'pehli level hai'
       },
       {
-         image: 'imagedata',
+         image: 'basic_constructs.jpeg',
          name: 'level 2',
          url: '/lev/9',
          description: 'doosri level hai'
