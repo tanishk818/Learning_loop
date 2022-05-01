@@ -11,13 +11,13 @@ var updateMaxLevel = async (level, user) => {
 
 router.get('/1', isLoggedIn, async (req, res) => {
    // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev1.ejs')
+   res.render('All_Levels/level_1.ejs')
 });
 router.get('/2', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });
    updateMaxLevel("1", user);
    // res.sendFile(path.join(__dirname+'/lev1.html'));
-   res.render('lev2.ejs')
+   res.render('All_Levels/level_2.ejs')
 });
 router.get('/3', isLoggedIn, async (req, res) => {
    let user = await User.find({ username: req.user.username });

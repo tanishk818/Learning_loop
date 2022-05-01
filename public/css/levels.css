@@ -1,0 +1,48 @@
+.code-step {
+  font-size: 20px;
+  font-family: "Monaco", "Consolas", "Bitstream Vera Sans Mono", "Courier New",
+    Courier, monospace;
+  font-style: italic;
+  font-weight: 20px;
+  margin: 0px;
+  padding: 0px;
+  background: none;
+  border: 0;
+  bottom: auto;
+  float: none;
+  height: auto;
+  left: auto;
+  line-height: 1.1em;
+  margin: 0;
+  outline: 0;
+  overflow: visible;
+  padding: 0;
+  position: static;
+  right: auto;
+  text-align: left;
+  top: auto;
+  vertical-align: baseline;
+  width: auto;
+  box-sizing: content-box;
+  font-family: "Monaco", "Consolas", "Bitstream Vera Sans Mono", "Courier New",
+    Courier, monospace;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  min-height: inherit;
+  min-height: auto;
+}
+.main-content {
+  margin: 1em 3em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.level-no {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+}
+.code-step {
+  margin: 1em 0;
+  font-size: 20px;
+}

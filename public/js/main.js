@@ -5,7 +5,7 @@
                             value.x = +document.getElementsByTagName("circle")[15].getAttribute("cx");
                             temp = +document.getElementsByTagName("circle")[15].getAttribute("cx") + +110;
                             check(1);
-                            //print();
+                            print();
                             if (temp >= 380)
                             {
                                 temp = 50;
@@ -38,7 +38,7 @@
                             value.x = document.getElementsByTagName("circle")[15].getAttribute("cx");
                             temp = temp - 110;
                             check(-1);
-                            //print();
+                            print();
                             if (temp < 0)
                             {
                                 temp = 270
@@ -75,7 +75,7 @@
                                 temp = 50;
                             }
                             check(-2);
-                            //print();
+                            print();
 
 
                             anime({
@@ -109,7 +109,7 @@
                                 temp = 490;
                             }
                             check(2);
-                            //print();
+                            print();
 
 
                             anime({
