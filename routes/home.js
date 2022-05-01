@@ -279,4 +279,23 @@ router.get('/logout', (req, res) => {
    res.redirect('/login');
 })
 
+router.post('/changepassword',(req,res) => {
+   let user = req.user;
+   user.setPassword(req.body.password, (err, user) => {
+      user.save()
+      console.log(user)
+   });
+   req.flash('success', 'Password reset successfully')
+   res.redirect('/login')
+})
+
+router.get('/changepassword',(req,res) => {
+   if(!req.isAuthenticated()){
+   req.flash("error","You must be log in first")
+   res.redirect('/login')
+   }
+   else
+   res.render('changePass.ejs')
+})
+
 module.exports = router;

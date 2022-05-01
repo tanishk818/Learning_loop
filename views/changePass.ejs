@@ -1,0 +1,70 @@
+<%- include('./partials/log.ejs') %>
+
+<body >
+   
+   <%- include('./partials/flash')%>
+   <div class="container" id="container">
+      <div class="form-container sign-in-container">
+          
+         <form action="/changePassword" method="POST">
+            <h1>Change Password</h1>
+            <input id="password" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password" required>
+            <input id="password_two" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
+            <button>Change Password</button>
+         </form>
+         
+      </div>
+   
+      
+      <div class="overlay-container">
+         <div class="overlay">
+            <div class="overlay-panel overlay-right">
+               <h1>Hello, User</h1>
+               <p>Please enter your new password to get on the surfing again</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h1 class="text-center">What's My Password?</h1>
+          </div>
+          <div class="modal-body">
+              <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="text-center">
+                              
+                              <p>If you have forgotten your password you can reset it here.</p>
+                                <div class="panel-body">
+                                    <fieldset>
+                                       <form action="/reset" method="POST">
+                                          <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="email" id="forgotEmail"> 
+                                          <button>Change Password</button>
+                                       </form>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+              <div class="col-md-12">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            </div>	
+          </div>
+      </div>
+      </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+   
+</body>
