@@ -1,0 +1,19 @@
+.about-content {
+  margin: 8em auto;
+  text-align: justify;
+  text-justify: inter-word;
+  width: 55%;
+}
+.about-heading {
+  margin: 1em auto;
+  text-align: center;
+  color: #fbb13c;
+}
+.content-heading {
+  margin: 1em auto;
+  text-align: center;
+  color: rgba(0,0,0,0.55);
+}
+.cp1 {
+  text-align: center;
+}

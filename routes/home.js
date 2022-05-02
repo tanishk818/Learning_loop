@@ -153,7 +153,7 @@ router.get("/admin", isAdmin, async (req, res) => {
       res.render("admin.ejs", { users, noOfLevels });
    else {
       req.flash('error', 'you must be log in as an admin to access the admin site');
-      res.redirect('/lev/1');
+      res.redirect('/levels');
    }
 })
 
@@ -227,9 +227,6 @@ router.get('/logout', (req, res) => {
    res.redirect('/login');
 })
 
-/*   }
-
-})*/
 router.post('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var text = {
       iv: req.params.iv,
@@ -264,15 +261,15 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
    console.log(d)
    console.log(time)
    console.log(d.getTime())
-   console.log(d.getTime()-Date.parse(time))
-   console.log(Math.round(((d.getTime()-Date.parse(time))/1000)/60));
-   if(Math.round(((d.getTime()-Date.parse(time))/1000)/60)<10)
-   res.render('forgotPass.ejs', { username, email, text });
-   else{
-      req.flash('error','Rest link expired');
+   console.log(d.getTime() - Date.parse(time))
+   console.log(Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60));
+   if (Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60) < 10)
+      res.render('forgotPass.ejs', { username, email, text });
+   else {
+      req.flash('error', 'Rest link expired');
       res.redirect('/login')
    }
-   
+
 
 })
 
@@ -295,7 +292,7 @@ router.get('/logout', (req, res) => {
    res.redirect('/login');
 })
 
-router.post('/changepassword',(req,res) => {
+router.post('/changepassword', (req, res) => {
    let user = req.user;
    user.setPassword(req.body.password, (err, user) => {
       user.save()
@@ -305,13 +302,37 @@ router.post('/changepassword',(req,res) => {
    res.redirect('/login')
 })
 
-router.get('/changepassword',(req,res) => {
-   if(!req.isAuthenticated()){
-   req.flash("error","You must be log in first")
-   res.redirect('/login')
+router.get('/changepassword', (req, res) => {
+   if (!req.isAuthenticated()) {
+      req.flash("error", "You must be log in first")
+      res.redirect('/login')
    }
    else
-   res.render('changePass.ejs')
+      res.render('changePass.ejs')
+})
+router.get('/about', (req, res) => {
+   if (!req.isAuthenticated()) {
+      req.flash("error", "You must be log in first")
+      res.redirect('/login')
+   }
+   else
+      res.render('about.ejs')
+})
+router.get('/feedback', (req, res) => {
+   if (!req.isAuthenticated()) {
+      req.flash("error", "You must be log in first")
+      res.redirect('/login')
+   }
+   else
+      res.render('feedback.ejs')
+})
+router.get('/howtoplay', (req, res) => {
+   if (!req.isAuthenticated()) {
+      req.flash("error", "You must be log in first")
+      res.redirect('/login')
+   }
+   else
+      res.render('howToPlay.ejs')
 })
 
 module.exports = router;
