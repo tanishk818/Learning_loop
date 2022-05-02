@@ -1,7 +1,6 @@
 .about-content {
   margin: 8em auto;
   text-align: justify;
-  text-justify: inter-word;
   width: 55%;
 }
 .about-heading {
@@ -12,8 +11,13 @@
 .content-heading {
   margin: 1em auto;
   text-align: center;
-  color: rgba(0,0,0,0.55);
+  color: rgba(0, 0, 0, 0.55);
 }
 .cp1 {
   text-align: center;
+}
+
+.code-syntax {
+  color: red;
+  font-style: italic;
 }
