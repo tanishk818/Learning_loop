@@ -141,10 +141,6 @@ router.get("/levels", isLoggedIn, (req, res) => {
    res.render('lev.ejs', { levelData: data })
 })
 
-router.get("/help", (req, res) => {
-   res.render('contact.ejs')
-})
-
 router.get("/admin", isAdmin, async (req, res) => {
    let noOfLevels = 5;
    let users = await User.find({});
@@ -333,6 +329,15 @@ router.get('/howtoplay', (req, res) => {
    }
    else
       res.render('howToPlay.ejs')
+})
+
+router.get("/faq", (req, res) => {
+   if (!req.isAuthenticated()) {
+      req.flash("error", "You must be log in first")
+      res.redirect('/login')
+   }
+   else
+      res.render('faq.ejs')
 })
 
 module.exports = router;

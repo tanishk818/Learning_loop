@@ -24,7 +24,14 @@
 }
 
 /* styles for feedback page */
-.feedback-form{
+.feedback-form {
   margin: 5em auto;
   width: 55%;
+}
+
+/* styles for faq page */
+.accordion-button:not(.collapsed) {
+  color: rgba(0, 0, 0, 0.55);
+  background-color: #66dcc8;
+  font-weight: 600;
 }
