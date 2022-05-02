@@ -9,6 +9,7 @@ const { encrypt, decrypt } = require('../crypto');
 
 async function sEmail(email, username) {
    const d = new Date();
+   console.log(d);
    var str = email + "@#$" + d + "@#$" + username;
    var tab = encrypt(Buffer.from(str, 'utf8'));
    console.log(tab)
@@ -238,6 +239,7 @@ router.post('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var email = str.split("@#$")[0];
    var username = str.split("@#$")[2]
    let user = await User.findOne({ email: email });
+   console.log(user);
    user.setPassword(req.body.password, (err, user) => {
       user.save()
       console.log(user)
@@ -256,10 +258,24 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
 
    var str = decrypt(text);
    var email = str.split("@#$")[0];
+   var time = (str.split("@#$")[1]);
    var username = str.split("@#$")[2];
+   const d = new Date();
+   console.log(d)
+   console.log(time)
+   console.log(d.getTime())
+   console.log(d.getTime()-Date.parse(time))
+   console.log(Math.round(((d.getTime()-Date.parse(time))/1000)/60));
+   if(Math.round(((d.getTime()-Date.parse(time))/1000)/60)<10)
    res.render('forgotPass.ejs', { username, email, text });
+   else{
+      req.flash('error','Rest link expired');
+      res.redirect('/login')
+   }
+   
 
 })
+
 
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
