@@ -17,7 +17,14 @@
   text-align: center;
 }
 
+/* styles for how to play page */
 .code-syntax {
   color: red;
   font-style: italic;
+}
+
+/* styles for feedback page */
+.feedback-form{
+  margin: 5em auto;
+  width: 55%;
 }
