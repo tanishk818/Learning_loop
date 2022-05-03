@@ -85,57 +85,57 @@ router.get("/levels", isLoggedIn, (req, res) => {
    let data = [
       {
          image: 'basic_constructs.jpeg',
-         name: 'level 1',
+         name: 'Level 1',
          url: '/lev/1',
-         description: 'pehli level hai'
+         description: 'A very basic level to familiarize you with the gameplay.'
       },
       {
          image: 'basic_constructs.jpeg',
-         name: 'level 2',
+         name: 'Level 2',
          url: '/lev/2',
-         description: 'doosri level hai'
+         description: 'A beginner level with basic constructs.'
       },
       {
-         image: 'basic_constructs.jpeg',
-         name: 'level 1',
+         image: 'conditional.jpeg',
+         name: 'Level 3',
          url: '/lev/3',
-         description: 'pehli level hai'
+         description: 'Level based on conditional (if-else) programming construct.'
       },
       {
-         image: 'basic_constructs.jpeg',
-         name: 'level 2',
+         image: 'loops.jpeg',
+         name: 'Level 4',
          url: '/lev/4',
-         description: 'doosri level hai'
+         description: 'Level based on Looping concept.'
       },
       {
-         image: 'basic_constructs.jpeg',
-         name: 'level 2',
+         image: 'loops.jpeg',
+         name: 'Level 5',
          url: '/lev/5',
-         description: 'doosri level hai'
+         description: 'A more complex level on loops'
       },
       {
-         image: 'basic_constructs.jpeg',
-         name: 'level 1',
+         image: 'loops.jpeg',
+         name: 'Level 6',
          url: '/lev/6',
-         description: 'pehli level hai'
+         description: 'Level based on nested loops'
       },
       {
          image: 'basic_constructs.jpeg',
-         name: 'level 2',
+         name: 'Level 7',
          url: '/lev/7',
-         description: 'doosri level hai'
+         description: 'Complex nested loops.'
       },
       {
          image: 'basic_constructs.jpeg',
-         name: 'level 1',
+         name: 'Level 8',
          url: '/lev/8',
-         description: 'pehli level hai'
+         description: 'Loops with conditionals constructs.'
       },
       {
          image: 'basic_constructs.jpeg',
-         name: 'level 2',
+         name: 'Level 9',
          url: '/lev/9',
-         description: 'doosri level hai'
+         description: 'Nested loops with conditionals constructs.'
       },
    ]
    res.render('lev.ejs', { levelData: data })

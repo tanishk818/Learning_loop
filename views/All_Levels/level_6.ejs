@@ -17,7 +17,7 @@
                 <blockquote>Winning solves everything.</blockquote>
               </div>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-success" href="6" role="button">Next Level!</a>
+              <a class="btn btn-success" href="7" role="button">Next Level!</a>
             </div>
           </div>
         </div>
@@ -36,13 +36,13 @@
                 <blockquote>Winning provides happiness.Loosing provides wisdom</blockquote>
               </div>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-danger" href="/lev/5" role="button">Try Again</a>
+              <a class="btn btn-danger" href="/lev/6" role="button">Try Again</a>
             </div>
           </div>
         </div>
       </div>
       <!-- This is the main content -->
-      <h2 class="level-no">Level 5</h2>
+      <h2 class="level-no">Level 6</h2>
       <div class="main-content">
 
         <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
@@ -82,20 +82,12 @@
         </svg>
         <div class="code-steps code">
           <h3 class="code-heading">Instructions</h3>
-          <p class="code-step lurd"></p>
-          <p class="code-step loop">repeat (5) { </p>
-          <p class="code-step lurd code-step-indent"></p>
+          <p class="code-step loop">repeat (4) { </p>
+            <p class="code-step loop code-step-indent">repeat (3) { </p>
+                <p class="code-step lurd code-step-indent-2"></p>
+            <p class="code-step loop  code-step-indent"> } </p>         
+            <p class="code-step lurd code-step-indent"></p>
           <p class="code-step loop"> } </p>
-          <p class="code-step loop">repeat (5) { </p>
-          <p class="code-step lurd code-step-indent"></p>
-          <p class="code-step loop"> } </p>
-          <p class="code-step loop">repeat (5) { </p>
-          <p class="code-step lurd code-step-indent"></p>
-          <p class="code-step loop"> } </p>
-          <p class="code-step loop">repeat (5) { </p>
-          <p class="code-step lurd code-step-indent"></p>
-          <p class="code-step loop"> } </p>
-          <p class="code-step lurd"></p>
         </div>
       </div>
       <!-- <%- include('../partials/key.ejs') %> -->
@@ -103,7 +95,7 @@
         <script src="/js/three.min.js"></script>
         <%- include('../partials/script.ejs') %>
           <script>
-            var i = 4;
+            var i = 0;
             var count = 0;
             var visibilityKey = [{
               x: 0,
@@ -117,21 +109,8 @@
 
             var levels = [
               {
-                lev: [1, 1, 1],
-              },
-              {
-                lev: [-2, -2, -2, -2, 1, 1, 2, 2, 2, 2, 1, 1]
-              },
-              {
-                lev: [1, -2, 1, -2, -1, -2, 1, -2, -2, 1]
-              },
-              {
-                lev: [1, -1],
-                win: [1]
-              },
-              {
-                lev: [1, 2, 1, -2, -1, 1],
-                win: [1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, -2, -2, -2, -2, -2, -1, -1, -1, -1, -1, 1]
+                lev: [-2, -1],
+                win: [-2, -2, -2, -1,-2, -2, -2, -1,-2, -2, -2, -1,-2, -2, -2, -1,]
               }
             ];
             print();

@@ -49,12 +49,32 @@
 .code-step-indent{
   text-indent: 1em;
 }
+.code-step-indent-2{
+  text-indent: 2em;
+}
+.code-step-indent-3{
+  text-indent: 3em;
+}
 .dot {
   height: 20px;
   width: 20px;
-  margin-left: 15px;
-  margin-top: 60px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 10px ;
   background-color: green;
   border-radius: 50%;
   display: inline-block;
+}
+.code-heading{
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+.lurd{
+  color:red;
+}
+.if-else{
+  color: mediumblue;
+}
+.loop{
+  color: indigo;
 }
