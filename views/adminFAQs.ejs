@@ -81,98 +81,45 @@
             <ion-icon name="menu-outline"></ion-icon>
           </div>
         </div>
-
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-          <div class="card">
-            <div>
-              <div class="numbers">
-                <%= noOfLevels %>
-              </div>
-              <div class="cardName">No of Levels</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="eye-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-
-              <div class="numbers">
-                <%= users.length %>
-              </div>
-              <div class="cardName">No Of Users</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cart-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-              <div class="numbers">
-                <%= feedbacks.length %>
-              </div>
-              <div class="cardName">Feedback Count</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
-            </div>
-          </div>
-
-
-        </div>
-
-        <!-- ================ Order Details List ================= -->
         <div class="details">
           <div class="recentOrders">
             <div class="cardHeader">
-              <h2>User Registered</h2>
-
+              <h2>Manage Frequently Asked Questions</h2>
             </div>
-
+            <form action="/admin/faqs" method="POST">
+              <input type="text" name="ques" placeholder="Enter Question">
+              <input type="text" name="ans" placeholder="Enter Answer">
+              <button type="submit">Add FAQ</button>
+            </form>
             <table>
               <thead>
                 <tr>
-                  <td>User Name</td>
-                  <td>Email</td>
-                  <td>Status</td>
+                  <td>Question</td>
+                  <td>Answer</td>
+                  <td>Date Created</td>
                 </tr>
               </thead>
 
               <tbody>
-                <% for(let x of users){ %>
+                <% for(let faq of faqs){ %>
                   <tr>
                     <td>
-                      <%=x.username %>
+                      <%=faq.ques %>
                     </td>
                     <td>
-                      <%=x.email %>
+                      <%=faq.ans %>
                     </td>
-
-                    <% if(x.maxLevel==undefined||x.maxLevel=="0" ) { %>
-                      <td><span class="status return">InActive</span></td>
-                      <% } %>
-                        <% if(x.maxLevel!=undefined&&x.maxLevel!="0" ) { %>
-                          <td><span class="status delivered">Active</span></td>
-                          <% } %>
-
+                    <td>
+                      <%=faq.createdOn.toDateString() %>
+                    </td>
                   </tr>
                   <% } %>
-
-
-
               </tbody>
             </table>
           </div>
-
-
         </div>
       </div>
+    </div>
     </div>
 
     <!-- =========== Scripts =========  -->

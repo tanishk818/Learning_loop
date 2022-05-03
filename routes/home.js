@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Faq = require('../models/faq');
+const Feedback = require('../models/feedback');
 const passport = require('passport');
 const { isAdmin, isLoggedIn } = require('../middleware');
 const { userSchema } = require('../Schema.js');
 const nodemailer = require("nodemailer");
 const { encrypt, decrypt } = require('../crypto');
 
-async function sEmail(email, username) {
+async function sEmail(email, username, resetLinkCount) {
    const d = new Date();
    console.log(d);
-   var str = email + "@#$" + d + "@#$" + username;
+   var str = email + "@#$" + d + "@#$" + username + "@#$" + resetLinkCount;
    var tab = encrypt(Buffer.from(str, 'utf8'));
    console.log(tab)
    var link = "http://localhost:3000/resetPassword/" + tab.iv + "/" + tab.content;
@@ -120,19 +122,19 @@ router.get("/levels", isLoggedIn, (req, res) => {
          description: 'Level based on nested loops'
       },
       {
-         image: 'basic_constructs.jpeg',
+         image: 'nested_loops.jpeg',
          name: 'Level 7',
          url: '/lev/7',
          description: 'Complex nested loops.'
       },
       {
-         image: 'basic_constructs.jpeg',
+         image: 'nested_loops.jpeg',
          name: 'Level 8',
          url: '/lev/8',
          description: 'Loops with conditionals constructs.'
       },
       {
-         image: 'basic_constructs.jpeg',
+         image: 'nested_loops.jpeg',
          name: 'Level 9',
          url: '/lev/9',
          description: 'Nested loops with conditionals constructs.'
@@ -144,12 +146,43 @@ router.get("/levels", isLoggedIn, (req, res) => {
 router.get("/admin", isAdmin, async (req, res) => {
    let noOfLevels = 5;
    let users = await User.find({});
+   let feedbacks = await Feedback.find({})
 
    if (req.user.username === "admin")
-      res.render("admin.ejs", { users, noOfLevels });
+      res.render("admin.ejs", { users, noOfLevels, feedbacks });
    else {
       req.flash('error', 'you must be log in as an admin to access the admin site');
       res.redirect('/levels');
+   }
+})
+router.get("/admin/feedbacks", isAdmin, async (req, res) => {
+   let feedbacks = await Feedback.find({})
+
+   if (req.user.username === "admin")
+      res.render("adminFeedbacks.ejs", { feedbacks });
+   else {
+      req.flash('error', 'you must be log in as an admin to access the admin site');
+      res.redirect('/levels');
+   }
+})
+router.get("/admin/faqs", isAdmin, async (req, res) => {
+   let faqs = await Faq.find({})
+   if (req.user.username === "admin")
+      res.render("adminFAQs.ejs", { faqs });
+   else {
+      req.flash('error', 'you must be log in as an admin to access the admin site');
+      res.redirect('/levels');
+   }
+})
+router.post("/admin/faqs", isAdmin, async (req, res) => {
+   try {
+      let data = { ...req.body, createdOn: new Date() }
+      let faq = new Faq({ ...data })
+      await faq.save()
+      res.redirect('/admin/faqs')
+   } catch (e) {
+      req.flash('error', e.message);
+      res.redirect('/login');
    }
 })
 
@@ -165,7 +198,7 @@ router.post('/Signup', validate, async (req, res, next) => {
    let oldUser = await User.findOne({ email: req.body.email });
    console.log(oldUser);
    if (oldUser) {
-      req.flash('error', 'User already exist')
+      req.flash('error', 'This email is already registered.')
       res.redirect('/login')
    } else {
       // Insert the new user if they do not exist yet
@@ -179,8 +212,8 @@ router.post('/Signup', validate, async (req, res, next) => {
 
             if (err) return next(err);
             console.log(req.registeredUser);
-            req.flash('success', 'welcome to Learning Loop');
-            res.redirect('/lev/1');
+            req.flash('success', 'Welcome to Learning Loop');
+            res.redirect('/levels');
 
          })
       }
@@ -193,7 +226,7 @@ router.post('/Signup', validate, async (req, res, next) => {
 })
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-   req.flash('success', 'welcome back!' + req.user.username);
+   req.flash('success', 'Welcome!' + req.user.username);
    var redirectUrl;
    if (req.user.username == "admin")
       redirectUrl = '/admin';
@@ -205,11 +238,11 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 
 router.post('/reset', async (req, res) => {
    let oldUser = await User.findOne({ email: req.body.email });
-   console.log(oldUser);
+   // console.log(oldUser);
    if (oldUser) {
-      console.log(req.user);
-      sEmail(req.body.email, oldUser.username);
-      req.flash('success', 'reset Link set')
+      // console.log(req.user);
+      sEmail(req.body.email, oldUser.username, oldUser.resetLinkCount);
+      req.flash('success', 'Reset Link Sent')
       res.redirect('/login')
    }
    else {
@@ -232,7 +265,8 @@ router.post('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var email = str.split("@#$")[0];
    var username = str.split("@#$")[2]
    let user = await User.findOne({ email: email });
-   console.log(user);
+   // console.log(user);
+   user.resetLinkCount++
    user.setPassword(req.body.password, (err, user) => {
       user.save()
       console.log(user)
@@ -253,20 +287,27 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var email = str.split("@#$")[0];
    var time = (str.split("@#$")[1]);
    var username = str.split("@#$")[2];
-   const d = new Date();
-   console.log(d)
-   console.log(time)
-   console.log(d.getTime())
-   console.log(d.getTime() - Date.parse(time))
-   console.log(Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60));
-   if (Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60) < 10)
-      res.render('forgotPass.ejs', { username, email, text });
-   else {
-      req.flash('error', 'Rest link expired');
+   var resetLinkCount = str.split("@#$")[3];
+   let user = await User.findOne({ email: email });
+   if (parseInt(user.resetLinkCount) !== parseInt(resetLinkCount)) {
+      req.flash('error', 'Reset Link Expired')
       res.redirect('/login')
    }
-
-
+   else {
+      console.log(user.resetLinkCount, resetLinkCount);
+      const d = new Date();
+      // console.log(d)
+      // console.log(time)
+      // console.log(d.getTime())
+      // console.log(d.getTime() - Date.parse(time))
+      // console.log(Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60));
+      if (Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60) < 10)
+         res.render('forgotPass.ejs', { username, email, text });
+      else {
+         req.flash('error', 'Rest link expired');
+         res.redirect('/login')
+      }
+   }
 })
 
 
@@ -277,7 +318,7 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
    if (req.user.username == "admin")
       redirectUrl = '/admin';
    else
-      redirectUrl = '/lev/1';
+      redirectUrl = '/levels';
    delete req.session.returnTo;
    res.redirect(redirectUrl);
 })
@@ -322,6 +363,18 @@ router.get('/feedback', (req, res) => {
    else
       res.render('feedback.ejs')
 })
+router.post('/feedback', async (req, res) => {
+   try {
+      let data = { ...req.body, username: req.user.username, createdOn: new Date() }
+      let feedback = new Feedback({ ...data })
+      await feedback.save()
+      req.flash("success", "Feedback sent successfully")
+      res.redirect('/levels')
+   } catch (e) {
+      req.flash('error', e.message);
+      res.redirect('/login');
+   }
+})
 router.get('/howtoplay', (req, res) => {
    if (!req.isAuthenticated()) {
       req.flash("error", "You must be log in first")
@@ -331,13 +384,14 @@ router.get('/howtoplay', (req, res) => {
       res.render('howToPlay.ejs')
 })
 
-router.get("/faq", (req, res) => {
+router.get("/faq", async (req, res) => {
+   let faqs = await Faq.find({})
    if (!req.isAuthenticated()) {
       req.flash("error", "You must be log in first")
       res.redirect('/login')
    }
    else
-      res.render('faq.ejs')
+      res.render('faq.ejs', { faqs })
 })
 
 module.exports = router;

@@ -18,6 +18,11 @@
             <li class="nav-item">
                 <a href="/faq" class="nav-link h5">FAQs</a>
             </li>
+            <% if(currentUser.username=='admin' ) { %>
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link h5">Admin Portal</a>
+                </li>
+                <% } %>
         </ul>
         <div class="dropdown profile-icon">
             <button class="btn dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"

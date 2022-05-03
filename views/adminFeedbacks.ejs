@@ -81,86 +81,33 @@
             <ion-icon name="menu-outline"></ion-icon>
           </div>
         </div>
-
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-          <div class="card">
-            <div>
-              <div class="numbers">
-                <%= noOfLevels %>
-              </div>
-              <div class="cardName">No of Levels</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="eye-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-
-              <div class="numbers">
-                <%= users.length %>
-              </div>
-              <div class="cardName">No Of Users</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cart-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-              <div class="numbers">
-                <%= feedbacks.length %>
-              </div>
-              <div class="cardName">Feedback Count</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
-            </div>
-          </div>
-
-
-        </div>
-
-        <!-- ================ Order Details List ================= -->
+        <!-- Content -->
         <div class="details">
           <div class="recentOrders">
             <div class="cardHeader">
-              <h2>User Registered</h2>
-
+              <h2>Feedbacks Recieved</h2>
             </div>
-
             <table>
               <thead>
                 <tr>
-                  <td>User Name</td>
-                  <td>Email</td>
-                  <td>Status</td>
+                  <td>Username</td>
+                  <td>Message</td>
+                  <td>Date Created</td>
                 </tr>
               </thead>
 
               <tbody>
-                <% for(let x of users){ %>
+                <% for(let feedback of feedbacks){ %>
                   <tr>
                     <td>
-                      <%=x.username %>
+                      <%=feedback.username %>
                     </td>
                     <td>
-                      <%=x.email %>
+                      <%=feedback.message %>
                     </td>
-
-                    <% if(x.maxLevel==undefined||x.maxLevel=="0" ) { %>
-                      <td><span class="status return">InActive</span></td>
-                      <% } %>
-                        <% if(x.maxLevel!=undefined&&x.maxLevel!="0" ) { %>
-                          <td><span class="status delivered">Active</span></td>
-                          <% } %>
-
+                    <td>
+                      <%=feedback.createdOn.toDateString() %>
+                    </td>
                   </tr>
                   <% } %>
 

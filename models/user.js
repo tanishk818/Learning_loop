@@ -12,6 +12,10 @@ const userScehma = new Schema({
     maxLevel: {
         type: Number,
         default: 0
+    },
+    resetLinkCount: {
+        type: Number,
+        default: 0
     }
 
 });

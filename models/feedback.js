@@ -5,6 +5,6 @@ const feedbackSchema = new Schema({
     username: String,
     name: String,
     message: String,
-    createdOn: new Date()
+    createdOn: Date
 });
-module.exports = mongoose.model('Comment', feedbackSchema);
+module.exports = mongoose.model('Feedback', feedbackSchema);
