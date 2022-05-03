@@ -28,7 +28,7 @@ async function sEmail(email, username, resetLinkCount) {
    const mailOptions = {
       from: 'info.learningloop@gmail.com',
       to: email,
-      subject: 'Invoices due',
+      subject: 'Password Reset',
       html: '<p>Click <a href="' + link + '">here</a> to reset your password</p>'
    };
 
@@ -68,16 +68,16 @@ async function sEmail(email, username, resetLinkCount) {
    }
 
 }
-const validate = (req, res, next) => {
-   const { error } = userSchema.validate(req.body);
-   console.log(error)
-   if (error) {
-      req.flash('error', error.details.map(el => el.message).join(','));
-      res.redirect('/login')
-   } else {
-      next();
-   }
-}
+// const validate = (req, res, next) => {
+//    const { error } = userSchema.validate(req.body);
+//    console.log(error)
+//    if (error) {
+//       req.flash('error', error.details.map(el => el.message).join(','));
+//       res.redirect('/login')
+//    } else {
+//       next();
+//    }
+// }
 
 router.get("/", (req, res) => {
    res.render('index.ejs')
@@ -148,7 +148,7 @@ router.get("/admin", isAdmin, async (req, res) => {
    let users = await User.find({});
    let feedbacks = await Feedback.find({})
 
-   if (req.user.username === "admin")
+   if (req.user.isAdmin)
       res.render("admin.ejs", { users, noOfLevels, feedbacks });
    else {
       req.flash('error', 'you must be log in as an admin to access the admin site');
@@ -158,7 +158,7 @@ router.get("/admin", isAdmin, async (req, res) => {
 router.get("/admin/feedbacks", isAdmin, async (req, res) => {
    let feedbacks = await Feedback.find({})
 
-   if (req.user.username === "admin")
+   if (req.user.isAdmin)
       res.render("adminFeedbacks.ejs", { feedbacks });
    else {
       req.flash('error', 'you must be log in as an admin to access the admin site');
@@ -167,7 +167,7 @@ router.get("/admin/feedbacks", isAdmin, async (req, res) => {
 })
 router.get("/admin/faqs", isAdmin, async (req, res) => {
    let faqs = await Faq.find({})
-   if (req.user.username === "admin")
+   if (req.user.isAdmin)
       res.render("adminFAQs.ejs", { faqs });
    else {
       req.flash('error', 'you must be log in as an admin to access the admin site');
@@ -194,19 +194,14 @@ router.get('/login', (req, res) => {
 })
 
 
-router.post('/Signup', validate, async (req, res, next) => {
-   let oldUser = await User.findOne({ email: req.body.email });
-   console.log(oldUser);
-   if (oldUser) {
-      req.flash('error', 'This email is already registered.')
-      res.redirect('/login')
-   } else {
+router.post('/Signup', async (req, res, next) => {
+   
       // Insert the new user if they do not exist yet
       let maxLevel = "0"
       try {
 
-         const { username, email, password } = req.body;
-         const user = new User({ email, maxLevel, username });
+         const { username, name, password } = req.body;
+         const user = new User({ name, maxLevel, username });
          const registeredUser = await User.register(user, password);
          req.login(registeredUser, err => {
 
@@ -218,10 +213,13 @@ router.post('/Signup', validate, async (req, res, next) => {
          })
       }
       catch (e) {
+         if(e.message == "A user with the given username is already registered"){
+            e.message = " User with that Email already exists "
+         }
          req.flash('error', e.message);
          res.redirect('login');
       }
-   }
+   
 
 })
 
@@ -237,22 +235,22 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 })
 
 router.post('/reset', async (req, res) => {
-   let oldUser = await User.findOne({ email: req.body.email });
+   let oldUser = await User.findOne({ username: req.body.email });
    // console.log(oldUser);
    if (oldUser) {
       // console.log(req.user);
-      sEmail(req.body.email, oldUser.username, oldUser.resetLinkCount);
+      sEmail(req.body.email, oldUser.name, oldUser.resetLinkCount);
       req.flash('success', 'Reset Link Sent')
       res.redirect('/login')
    }
    else {
-      req.flash('error', 'you are not registered yet')
+      req.flash('error', 'You are not registered yet')
       res.redirect('/login');
    }
 })
 router.get('/logout', (req, res) => {
    req.logOut();
-   req.flash('success', 'successfully logout');
+   req.flash('success', 'Successfully logout');
    res.redirect('/login');
 })
 
@@ -264,7 +262,7 @@ router.post('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var str = decrypt(text);
    var email = str.split("@#$")[0];
    var username = str.split("@#$")[2]
-   let user = await User.findOne({ email: email });
+   let user = await User.findOne({ username: email });
    // console.log(user);
    user.resetLinkCount++
    user.setPassword(req.body.password, (err, user) => {
@@ -288,8 +286,9 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var time = (str.split("@#$")[1]);
    var username = str.split("@#$")[2];
    var resetLinkCount = str.split("@#$")[3];
-   let user = await User.findOne({ email: email });
+   let user = await User.findOne({ username: email });
    if (parseInt(user.resetLinkCount) !== parseInt(resetLinkCount)) {
+      console.log(user.resetLinkCount, resetLinkCount);
       req.flash('error', 'Reset Link Expired')
       res.redirect('/login')
    }

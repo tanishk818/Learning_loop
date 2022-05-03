@@ -9,10 +9,10 @@
                <form action="/Signup" method="POST">
                   <h1>Create Account</h1>
                   <span>or use your email for registration</span>
-                  <input type="text" placeholder="Username" name="username" required
+                  <input type="text" placeholder="Name" name="name" required
                      oninvalid="this.setCustomValidity('Username must not be empty')"
                      onchange="this.setCustomValidity('')" />
-                  <input type="email" placeholder="Email" name="email" required />
+                  <input type="email" placeholder="Email" name="username" required />
                   <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
                      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                      placeholder="Password" name="password" />
@@ -23,9 +23,8 @@
                <form action="/login" method="POST">
                   <h1>Sign in</h1>
                   <span>or use your account</span>
-                  <input type="text" placeholder="Username" name="username" required
-                     oninvalid="this.setCustomValidity('Username must not be empty')"
-                     onchange="this.setCustomValidity('')" />
+                  <input type="email" placeholder="Email" name="username" required
+                   />
                   <input type="password" required placeholder="Password" name="password" />
                   <a href="#" data-target="#pwdModal" data-toggle="modal" id="forgotLink">Forgot your password?</a>
 
