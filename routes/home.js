@@ -312,7 +312,7 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
 
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-   req.flash('success', 'welcome back!' + req.user.username);
+   req.flash('success', 'Welcome back!' + req.user.name);
    var redirectUrl;
    if (req.user.username == "admin")
       redirectUrl = '/admin';
