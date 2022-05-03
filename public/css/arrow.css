@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+html {
+  height: 100%;
+}
+.screen {
+  width: 70%;
+  height: 85%;
+  position: absolute;
+  background: white;
+  border: 20px solid #474e5d;
+  border-radius: 10px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translateX(-50%);
+}
+.monitor > div {
+  position: absolute;
+}
+.monitor:before,
+.monitor:after,
+.laptop:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+}
+.monitor:before,
+.laptop:before {
+  top: -10px;
+  margin: -3px 0 0 -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background: #a5adbd;
+}
+.screen:after {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  bottom: -10px;
+  margin: 0 0 -4px -4px;
+  background: #e8ebf0;
+}
+.t {
+  right: 25%;
+  margin: 1px;
+  clear: right;
+  top: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+p {
+  font-size: 20px;
+  font-family: "Monaco", "Consolas", "Bitstream Vera Sans Mono", "Courier New",
+    Courier, monospace;
+  font-style: italic;
+  font-weight: 20px;
+  margin: 0px;
+  padding: 0px;
+  /*  */
+  background: none;
+  border: 0;
+  bottom: auto;
+  float: none;
+  height: auto;
+  left: auto;
+  line-height: 1.1em;
+  margin: 0;
+  outline: 0;
+  overflow: visible;
+  padding: 0;
+  position: static;
+  right: auto;
+  text-align: left;
+  top: auto;
+  vertical-align: baseline;
+  width: auto;
+  box-sizing: content-box;
+  font-family: "Monaco", "Consolas", "Bitstream Vera Sans Mono", "Courier New",
+    Courier, monospace;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  min-height: inherit;
+  min-height: auto;
+}
+
+.keys {
+  position: absolute;
+  bottom: -10px;
+  left: 40%;
+  margin-right: -60%;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  width: 350px;
+  height: 15%;
+}
+.arr {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 30px;
+  background: grey;
+  color: white;
+  font-size: 20px;
+  border-right: 10px solid #4d4d4d;
+  border-bottom: 10px solid #4d4d4d;
+  border-left: 10px solid #5a5a5a;
+  border-top: 10px solid #676767;
+  display: inline-block;
+  margin: 5px;
+  transition: all 0.05s linear;
+  user-select: none;
+}
+.arr:active {
+  border-bottom: 8px solid #4d4d4d;
+  text-shadow: 0 0 10px white, 0 0 10px white, 0 0 20px white;
+  transform: translate(0, 2px);
+}
+
+.up {
+  position: relative;
+  top: -4px;
+}
+
+.pressed {
+  border-bottom: 8px solid #4d4d4d;
+  text-shadow: 0 0 10px white;
+  transform: translate(0, 2px);
+}
+.fa {
+  font-size: 25px;
+}
+.names {
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white;
+}
+
+.b {
+  color: blue;
+  text-shadow: 0 0 10px blue, 0 0 10px blue, 0 0 10px blue, 0 0 10px blue;
+  font-size: 100px;
+  font-family: serif;
+}
+
+.a {
+  color: yellow;
+  text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow,
+    0 0 10px yellow;
+  font-size: 100px;
+  font-family: serif;
+}

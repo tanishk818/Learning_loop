@@ -1,14 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
 
 html {
-    height: 100%;
-     
+  height: 100%;
 }
 
 .screen {
   width: 360px;
   height: 570px;
-  position: relative;  
+  position: relative;
   background: white;
   border: 15px solid #474e5d;
   border-radius: 10px;
@@ -18,11 +17,11 @@ html {
 }
 .monitor:before,
 .monitor:after,
-.laptop:before{
-   content: "";
-   position: absolute;
-   left: 50%;
- }
+.laptop:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+}
 .monitor:before,
 .laptop:before {
   top: -10px;
@@ -32,20 +31,19 @@ html {
   border-radius: 6px;
   background: #a5adbd;
 }
-.t{
-    
-    margin-top: -5px;
-    line-height: 0.0;
+.t {
+  margin-top: -5px;
+  line-height: 0;
 }
-p{
-                font-size: 15px;
-                font-family: 'Special Elite', cursive;
-                font-style: italic;
-                
-                margin:0px;
-                padding: 0px;
-               line-height: 0.0;
-            }
+p {
+  font-size: 15px;
+  font-family: "Special Elite", cursive;
+  font-style: italic;
+
+  margin: 0px;
+  padding: 0px;
+  line-height: 0;
+}
 .screen:after {
   width: 8px;
   height: 8px;
@@ -55,15 +53,15 @@ p{
   background: #e8ebf0;
 }
 
- .keys {
-    position:absolute;
-    bottom: -15px;
-    left:40%;
-    margin-right:-60%;
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    width: 180px;
-     height: 15%;
+.keys {
+  position: absolute;
+  bottom: -15px;
+  left: 40%;
+  margin-right: -60%;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  width: 180px;
+  height: 15%;
 }
 
 .arr {
@@ -81,7 +79,7 @@ p{
   border-top: 10px solid #676767;
   display: inline-block;
   margin: 1px;
-  transition: all .05s linear;
+  transition: all 0.05s linear;
   user-select: none;
 }
 .arr:active {
@@ -100,12 +98,12 @@ p{
   text-shadow: 0 0 10px white;
   transform: translate(0, 2px);
 }
-.fa{
-    font-size: 15px;
+.fa {
+  font-size: 15px;
 }
 .names {
   font-size: 18px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   color: white;
   text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white;
@@ -120,10 +118,11 @@ p{
 
 .a {
   color: yellow;
-  text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow;
+  text-shadow: 0 0 10px yellow, 0 0 10px yellow, 0 0 10px yellow,
+    0 0 10px yellow;
   font-size: 100px;
   font-family: serif;
-}/*
+} /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
@@ -132,4 +131,3 @@ and open the template in the editor.
     Created on : 13 Jun, 2020, 2:59:10 PM
     Author     : dell
 */
-
