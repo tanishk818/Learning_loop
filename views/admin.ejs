@@ -48,9 +48,9 @@
           <li>
             <a href="/admin/faqs">
               <span class="icon">
-                <ion-icon name="help-outline"></ion-icon>
+                <ion-icon name="book-outline"></ion-icon>
               </span>
-              <span class="title">Help</span>
+              <span class="title">FAQs</span>
             </a>
           </li>
 
@@ -140,6 +140,7 @@
                 <tr>
                   <td>User Name</td>
                   <td>Email</td>
+                  <td>Levels Played</td>
                   <td>Status</td>
                 </tr>
               </thead>
@@ -152,6 +153,9 @@
                     </td>
                     <td>
                       <%=x.username %>
+                    </td>
+                    <td>
+                      <%=x.maxLevel %>
                     </td>
 
                     <% if(x.maxLevel==undefined||x.maxLevel=="0" ) { %>

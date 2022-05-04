@@ -48,9 +48,9 @@
           <li>
             <a href="/admin/faqs">
               <span class="icon">
-                <ion-icon name="help-outline"></ion-icon>
+                <ion-icon name="book-outline"></ion-icon>
               </span>
-              <span class="title">Help</span>
+              <span class="title">FAQs</span>
             </a>
           </li>
 
@@ -86,10 +86,10 @@
             <div class="cardHeader">
               <h2>Manage Frequently Asked Questions</h2>
             </div>
-            <form action="/admin/faqs" method="POST">
-              <input type="text" name="ques" placeholder="Enter Question">
-              <input type="text" name="ans" placeholder="Enter Answer">
-              <button type="submit">Add FAQ</button>
+            <form class="faq-form" action="/admin/faqs" method="POST">
+              <input class="faq-form-field" type="text" name="ques" placeholder="Enter Question" required>
+              <input class="faq-form-field" type="text" name="ans" placeholder="Enter Answer" required>
+              <button class="faq-form-button" type="submit">Add FAQ</button>
             </form>
             <table>
               <thead>
