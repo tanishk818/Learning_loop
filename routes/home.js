@@ -144,7 +144,7 @@ router.get("/levels", isLoggedIn, (req, res) => {
 })
 
 router.get("/admin", isAdmin, async (req, res) => {
-   let noOfLevels = 5;
+   let noOfLevels = 8;
    let users = await User.find({});
    let feedbacks = await Feedback.find({})
 
@@ -224,9 +224,9 @@ router.post('/Signup', async (req, res, next) => {
 })
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-   req.flash('success', 'Welcome!' + req.user.username);
+   req.flash('success', 'Welcome! ' + req.user.name);
    var redirectUrl;
-   if (req.user.username == "admin")
+   if (req.user.isAdmin)
       redirectUrl = '/admin';
    else
       redirectUrl = '/levels';
@@ -314,7 +314,7 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
    req.flash('success', 'Welcome back!' + req.user.name);
    var redirectUrl;
-   if (req.user.username == "admin")
+   if (req.user.isAdmin)
       redirectUrl = '/admin';
    else
       redirectUrl = '/levels';
