@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
+
 const User = require('../models/user');
 const Faq = require('../models/faq');
 const Feedback = require('../models/feedback');
+
 const passport = require('passport');
-const { isAdmin, isLoggedIn } = require('../middleware');
-const { userSchema } = require('../Schema.js');
-const nodemailer = require("nodemailer");
 const { encrypt, decrypt } = require('../crypto');
+const nodemailer = require("nodemailer");
+
+const { isAdmin, isLoggedIn } = require('../middleware');
+const levelData = require('./levelData')
+const { userSchema } = require('../Schema.js');
 
 async function sEmail(email, username, resetLinkCount) {
    const d = new Date();
@@ -84,63 +88,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/levels", isLoggedIn, (req, res) => {
-   let data = [
-      {
-         image: 'basic_constructs.jpeg',
-         name: 'Level 1',
-         url: '/lev/1',
-         description: 'A very basic level to familiarize you with the gameplay.'
-      },
-      {
-         image: 'basic_constructs.jpeg',
-         name: 'Level 2',
-         url: '/lev/2',
-         description: 'A beginner level with basic constructs.'
-      },
-      {
-         image: 'conditional.jpeg',
-         name: 'Level 3',
-         url: '/lev/3',
-         description: 'Level based on conditional (if-else) programming construct.'
-      },
-      {
-         image: 'loops.jpeg',
-         name: 'Level 4',
-         url: '/lev/4',
-         description: 'Level based on Looping concept.'
-      },
-      {
-         image: 'loops.jpeg',
-         name: 'Level 5',
-         url: '/lev/5',
-         description: 'A more complex level on loops'
-      },
-      {
-         image: 'loops.jpeg',
-         name: 'Level 6',
-         url: '/lev/6',
-         description: 'Level based on nested loops'
-      },
-      {
-         image: 'nested_loops.jpeg',
-         name: 'Level 7',
-         url: '/lev/7',
-         description: 'Complex nested loops.'
-      },
-      {
-         image: 'nested_loops.jpeg',
-         name: 'Level 8',
-         url: '/lev/8',
-         description: 'Loops with conditionals constructs.'
-      },
-      {
-         image: 'nested_loops.jpeg',
-         name: 'Level 9',
-         url: '/lev/9',
-         description: 'Nested loops with conditionals constructs.'
-      },
-   ]
-   res.render('lev.ejs', { levelData: data })
+   res.render('lev.ejs', { levelData })
 })
 
 router.get("/admin", isAdmin, async (req, res) => {
@@ -195,31 +143,31 @@ router.get('/login', (req, res) => {
 
 
 router.post('/Signup', async (req, res, next) => {
-   
-      // Insert the new user if they do not exist yet
-      let maxLevel = "0"
-      try {
 
-         const { username, name, password } = req.body;
-         const user = new User({ name, maxLevel, username });
-         const registeredUser = await User.register(user, password);
-         req.login(registeredUser, err => {
+   // Insert the new user if they do not exist yet
+   let maxLevel = "0"
+   try {
 
-            if (err) return next(err);
-            console.log(req.registeredUser);
-            req.flash('success', 'Welcome to Learning Loop');
-            res.redirect('/levels');
+      const { username, name, password } = req.body;
+      const user = new User({ name, maxLevel, username });
+      const registeredUser = await User.register(user, password);
+      req.login(registeredUser, err => {
 
-         })
+         if (err) return next(err);
+         console.log(req.registeredUser);
+         req.flash('success', 'Welcome to Learning Loop');
+         res.redirect('/levels');
+
+      })
+   }
+   catch (e) {
+      if (e.message == "A user with the given username is already registered") {
+         e.message = " User with that Email already exists "
       }
-      catch (e) {
-         if(e.message == "A user with the given username is already registered"){
-            e.message = " User with that Email already exists "
-         }
-         req.flash('error', e.message);
-         res.redirect('login');
-      }
-   
+      req.flash('error', e.message);
+      res.redirect('login');
+   }
+
 
 })
 
@@ -310,8 +258,8 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
 })
 
 
-router.get('/loginFailure',(req,res)=>{
-   req.flash("error","Email or password is incorrect");
+router.get('/loginFailure', (req, res) => {
+   req.flash("error", "Email or password is incorrect");
    res.redirect('/login')
 })
 
