@@ -223,7 +223,7 @@ router.post('/Signup', async (req, res, next) => {
 
 })
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/loginFailure' }), (req, res) => {
    req.flash('success', 'Welcome! ' + req.user.name);
    var redirectUrl;
    if (req.user.isAdmin)
@@ -310,16 +310,9 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
 })
 
 
-
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-   req.flash('success', 'Welcome back!' + req.user.name);
-   var redirectUrl;
-   if (req.user.isAdmin)
-      redirectUrl = '/admin';
-   else
-      redirectUrl = '/levels';
-   delete req.session.returnTo;
-   res.redirect(redirectUrl);
+router.get('/loginFailure',(req,res)=>{
+   req.flash("error","Email or password is incorrect");
+   res.redirect('/login')
 })
 
 router.get('/logout', (req, res) => {
