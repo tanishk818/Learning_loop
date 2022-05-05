@@ -99,7 +99,7 @@ router.get("/admin", isAdmin, async (req, res) => {
    if (req.user.isAdmin)
       res.render("admin.ejs", { users, noOfLevels, feedbacks });
    else {
-      req.flash('error', 'you must be log in as an admin to access the admin site');
+      req.flash('error', 'You must be logged in as an admin to access the admin site');
       res.redirect('/levels');
    }
 })
@@ -109,7 +109,7 @@ router.get("/admin/feedbacks", isAdmin, async (req, res) => {
    if (req.user.isAdmin)
       res.render("adminFeedbacks.ejs", { feedbacks });
    else {
-      req.flash('error', 'you must be log in as an admin to access the admin site');
+      req.flash('error', 'You must be logged in as an admin to access the admin site');
       res.redirect('/levels');
    }
 })
@@ -118,7 +118,7 @@ router.get("/admin/faqs", isAdmin, async (req, res) => {
    if (req.user.isAdmin)
       res.render("adminFAQs.ejs", { faqs });
    else {
-      req.flash('error', 'you must be log in as an admin to access the admin site');
+      req.flash('error', 'You must be logged in as an admin to access the admin site');
       res.redirect('/levels');
    }
 })
@@ -265,7 +265,7 @@ router.get('/loginFailure', (req, res) => {
 
 router.get('/logout', (req, res) => {
    req.logOut();
-   req.flash('success', 'successfully logout');
+   req.flash('success', 'Successfully logout');
    res.redirect('/login');
 })
 
@@ -281,7 +281,7 @@ router.post('/changepassword', (req, res) => {
 
 router.get('/changepassword', (req, res) => {
    if (!req.isAuthenticated()) {
-      req.flash("error", "You must be log in first")
+      req.flash("error", "You must log in first")
       res.redirect('/login')
    }
    else
@@ -289,7 +289,7 @@ router.get('/changepassword', (req, res) => {
 })
 router.get('/about', (req, res) => {
    if (!req.isAuthenticated()) {
-      req.flash("error", "You must be log in first")
+      req.flash("error", "You must log in first")
       res.redirect('/login')
    }
    else
@@ -297,7 +297,7 @@ router.get('/about', (req, res) => {
 })
 router.get('/feedback', (req, res) => {
    if (!req.isAuthenticated()) {
-      req.flash("error", "You must be log in first")
+      req.flash("error", "You must log in first")
       res.redirect('/login')
    }
    else
@@ -317,7 +317,7 @@ router.post('/feedback', async (req, res) => {
 })
 router.get('/howtoplay', (req, res) => {
    if (!req.isAuthenticated()) {
-      req.flash("error", "You must be log in first")
+      req.flash("error", "You must log in first")
       res.redirect('/login')
    }
    else
@@ -327,7 +327,7 @@ router.get('/howtoplay', (req, res) => {
 router.get("/faq", async (req, res) => {
    let faqs = await Faq.find({})
    if (!req.isAuthenticated()) {
-      req.flash("error", "You must be log in first")
+      req.flash("error", "You must log in first")
       res.redirect('/login')
    }
    else

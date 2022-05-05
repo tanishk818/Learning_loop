@@ -30,7 +30,7 @@ const levelData = [
         description: 'A more complex level on loops'
     },
     {
-        image: 'loops.jpeg',
+        image: 'nested_loops.jpeg',
         name: 'Level 6',
         url: '/lev/6',
         description: 'Level based on nested loops'
@@ -42,13 +42,13 @@ const levelData = [
         description: 'Complex nested loops.'
     },
     {
-        image: 'nested_loops.jpeg',
+        image: 'loop_conditional.jpg',
         name: 'Level 8',
         url: '/lev/8',
         description: 'Loops with conditionals constructs.'
     },
     {
-        image: 'nested_loops.jpeg',
+        image: 'loop_conditional.jpg',
         name: 'Level 9',
         url: '/lev/9',
         description: 'Nested loops with conditionals constructs.'
