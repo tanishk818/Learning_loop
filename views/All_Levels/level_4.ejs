@@ -13,11 +13,9 @@
                   <img src="/img/win.jpeg" class="img-fluid">
                 </div>
               </div>
-              <div class="quote">
-                <blockquote>Winning solves everything.</blockquote>
-              </div>
+              <br/>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-success" href="5" role="button">Next Level!</a>
+              <a class="btn btn-success button-right" href="5" role="button">Next Level!</a>
             </div>
           </div>
         </div>
@@ -32,11 +30,9 @@
                   <img src="/img/loss.jpeg" class="img-fluid">
                 </div>
               </div>
-              <div class="quote">
-                <blockquote>Winning provides happiness.Loosing provides wisdom</blockquote>
-              </div>
+              <br/>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-danger" href="/lev/4" role="button">Try Again</a>
+              <a class="btn btn-danger button-right" href="/lev/4" role="button">Try Again</a>
             </div>
           </div>
         </div>
@@ -258,13 +254,21 @@
               document.getElementsByTagName("circle")[15].setAttribute("cx", value.x);
               document.getElementsByTagName("circle")[15].setAttribute("cy", value.x);
               isPlaying = false
-              $('#lossModal').modal('show');
+              $('#lossModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+                });
+                $('#lossModal').modal('show');
             }
             if (count === levels[i].win.length) {
               count = 0;
               console.log("you win the level");
               isPlaying = false
-              $('#winModal').modal('show');
+              $('#winModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+                });
+                $('#winModal').modal('show');
               //alert("can't stop the champion!bravo! you win the level");
             }
           }

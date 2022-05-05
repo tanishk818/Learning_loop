@@ -13,11 +13,10 @@
                   <img src="/img/win.jpeg" class="img-fluid">
                 </div>
               </div>
-              <div class="quote">
-                <blockquote>Winning solves everything.</blockquote>
-              </div>
+              <!-- <br/> -->
+              <br/>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-success" href="2" role="button">Next Level!</a>
+              <a class="btn btn-success button-right" href="2" role="button" >Next Level!</a>
             </div>
           </div>
         </div>
@@ -32,11 +31,12 @@
                   <img src="/img/loss.jpeg" class="img-fluid">
                 </div>
               </div>
-              <div class="quote">
-                <blockquote>Winning provides happiness.Loosing provides wisdom</blockquote>
-              </div>
+              <!-- <div class="quote">
+                Winning provides happiness.Loosing provides wisdom
+              </div> -->
+              <br/>
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-danger" href="/lev/1" role="button">Try Again</a>
+              <a class="btn btn-danger button-right" href="/lev/1" role="button">Try Again</a>
             </div>
           </div>
         </div>
@@ -304,12 +304,22 @@
                 document.getElementsByTagName("circle")[3].setAttribute("cx", value.x);
                 document.getElementsByTagName("circle")[3].setAttribute("cy", value.x);
                 isPlaying = false
+                $('#lossModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+                });
                 $('#lossModal').modal('show');
               }
               if (count === levels[i].lev.length) {
                 count = 0;
-                isPlaying = false
-                $('#winModal').modal('show');
+                isPlaying = false;
+                $('#winModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+              });
+                $('#winModal').modal(
+                  'show'
+                );
               }
             }
             function print() {
