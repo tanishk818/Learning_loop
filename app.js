@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV === 'production'){
+    require('dotenv').config();
+}
 const express = require('express');
 const app = express()
 const path = require('path');
@@ -11,8 +14,11 @@ const User = require('./models/user');
 const home = require('./routes/home')
 const lev = require('./routes/lev')
 
+const database = process.env.DB_URL || 'mongodb://localhost/auth_demo_app';
 
-mongoose.connect('mongodb://localhost/auth_demo_app');
+// mongoose.connect('mongodb://localhost/auth_demo_app');
+// mongoose.connect('mongodb+srv://rohit:TOZWAv6nyZ8LmfTo@cluster0.zalme.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect(database);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
