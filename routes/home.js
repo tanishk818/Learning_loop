@@ -321,7 +321,7 @@ router.get('/howtoplay', (req, res) => {
       res.redirect('/login')
    }
    else
-      res.render('howToPlay.ejs')
+      res.render('howtoplay.ejs')
 })
 
 router.get("/faq", async (req, res) => {
