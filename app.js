@@ -18,7 +18,12 @@ const database = process.env.DB_URL || 'mongodb://localhost/auth_demo_app';
 
 // mongoose.connect('mongodb://localhost/auth_demo_app');
 // mongoose.connect('mongodb+srv://rohit:TOZWAv6nyZ8LmfTo@cluster0.zalme.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
-mongoose.connect(database);
+mongoose.connect(database, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+});
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
