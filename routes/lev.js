@@ -4,7 +4,6 @@ const { isLoggedIn } = require('../middleware');
 const User = require('../models/user');
 
 var updateMaxLevel = async (level, user) => {
-   console.log(user)
    user[0].maxLevel = Math.max(level, user[0].maxLevel);
    await User.findByIdAndUpdate(user[0]._id, user[0]);
 }

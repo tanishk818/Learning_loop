@@ -15,12 +15,9 @@ const { userSchema } = require('../Schema.js');
 
 async function sEmail(email, username, resetLinkCount) {
    const d = new Date();
-   console.log(d);
    var str = email + "@#$" + d + "@#$" + username + "@#$" + resetLinkCount;
    var tab = encrypt(Buffer.from(str, 'utf8'));
-   console.log(tab)
    var link = "http://localhost:3000/resetPassword/" + tab.iv + "/" + tab.content;
-   console.log();
    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -72,16 +69,6 @@ async function sEmail(email, username, resetLinkCount) {
    }
 
 }
-// const validate = (req, res, next) => {
-//    const { error } = userSchema.validate(req.body);
-//    console.log(error)
-//    if (error) {
-//       req.flash('error', error.details.map(el => el.message).join(','));
-//       res.redirect('/login')
-//    } else {
-//       next();
-//    }
-// }
 
 router.get("/", (req, res) => {
    res.render('index.ejs')
@@ -92,7 +79,7 @@ router.get("/levels", isLoggedIn, (req, res) => {
 })
 
 router.get("/admin", isAdmin, async (req, res) => {
-   let noOfLevels = 8;
+   let noOfLevels = 9;
    let users = await User.find({});
    let feedbacks = await Feedback.find({})
 
@@ -154,7 +141,6 @@ router.post('/Signup', async (req, res, next) => {
       req.login(registeredUser, err => {
 
          if (err) return next(err);
-         console.log(req.registeredUser);
          req.flash('success', 'Welcome to Learning Loop');
          res.redirect('/levels');
 
@@ -184,9 +170,7 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 
 router.post('/reset', async (req, res) => {
    let oldUser = await User.findOne({ username: req.body.email });
-   // console.log(oldUser);
    if (oldUser) {
-      // console.log(req.user);
       sEmail(req.body.email, oldUser.name, oldUser.resetLinkCount);
       req.flash('success', 'Reset Link Sent')
       res.redirect('/login')
@@ -209,21 +193,16 @@ router.post('/resetPassword/:iv/:encryptedData', async (req, res) => {
    }
    var str = decrypt(text);
    var email = str.split("@#$")[0];
-   var username = str.split("@#$")[2]
    let user = await User.findOne({ username: email });
-   // console.log(user);
    user.resetLinkCount++
    user.setPassword(req.body.password, (err, user) => {
       user.save()
-      console.log(user)
    });
    req.flash('success', 'Password reset successfully')
    res.redirect('/login')
 })
 
 router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
-   console.log(req.params.encryptedData)
-
    var text = {
       iv: req.params.iv,
       content: req.params.encryptedData
@@ -236,18 +215,11 @@ router.get('/resetPassword/:iv/:encryptedData', async (req, res) => {
    var resetLinkCount = str.split("@#$")[3];
    let user = await User.findOne({ username: email });
    if (parseInt(user.resetLinkCount) !== parseInt(resetLinkCount)) {
-      console.log(user.resetLinkCount, resetLinkCount);
       req.flash('error', 'Reset Link Expired')
       res.redirect('/login')
    }
    else {
-      console.log(user.resetLinkCount, resetLinkCount);
       const d = new Date();
-      // console.log(d)
-      // console.log(time)
-      // console.log(d.getTime())
-      // console.log(d.getTime() - Date.parse(time))
-      // console.log(Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60));
       if (Math.round(((d.getTime() - Date.parse(time)) / 1000) / 60) < 10)
          res.render('forgotPass.ejs', { username, email, text });
       else {
@@ -273,7 +245,6 @@ router.post('/changepassword', (req, res) => {
    let user = req.user;
    user.setPassword(req.body.password, (err, user) => {
       user.save()
-      console.log(user)
    });
    req.flash('success', 'Password reset successfully')
    res.redirect('/login')
