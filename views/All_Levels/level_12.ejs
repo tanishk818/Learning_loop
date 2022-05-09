@@ -13,9 +13,9 @@
                   <img src="/img/win.jpeg" class="img-fluid">
                 </div>
               </div>
-              <br/>
+              <br />
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-success button-right" href="/lev/updatelevel?level=4" role="button">Next Level!</a>
+              <a class="btn btn-success button-right" href="/lev/updatelevel?level=12" role="button">Next Level!</a>
             </div>
           </div>
         </div>
@@ -30,15 +30,15 @@
                   <img src="/img/loss.jpeg" class="img-fluid">
                 </div>
               </div>
-              <br/>
+              <br />
               <a class="btn btn-primary" href="/levels" role="button">All Levels</a>
-              <a class="btn btn-danger button-right" href="/lev/4" role="button">Try Again</a>
+              <a class="btn btn-danger button-right" href="/lev/12" role="button">Try Again</a>
             </div>
           </div>
         </div>
       </div>
       <!-- This is the main content -->
-      <h2 class="level-no">Level 4</h2>
+      <h2 class="level-no">Level 12</h2>
       <div class="main-content">
 
         <svg height="600" width="320" xmlns="http://www.w3.org/2000/svg">
@@ -50,21 +50,20 @@
             <circle cx="270" cy="50" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
 
-            <circle cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
+            <circle cx="50" cy="160" r="40" stroke="black" stroke-width="3" fill="green"
               filter="url(#inset-shadow)" />
-            <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="160" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
-            <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="270" cy="160" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
-            <circle cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
-              filter="url(#inset-shadow)" />
+            <circle cx="50" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C" filter="url(#inset-shadow)" />
             <circle cx="160" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="270" cy="270" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="270" cy="270" r="40" stroke="black" stroke-width="3" fill="green"
               filter="url(#inset-shadow)" />
             <circle cx="50" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
               filter="url(#inset-shadow)" />
-            <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#F76C6C"
+            <circle cx="160" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
             <circle cx="270" cy="380" r="40" stroke="black" stroke-width="3" fill="#FDD20E"
               filter="url(#inset-shadow)" />
@@ -78,13 +77,19 @@
         </svg>
         <div class="code-steps code">
           <h3 class="code-heading">Instructions</h3>
-          <p class="code-step lurd"></p>
           <p class="code-step loop">repeat (2) { </p>
-          <p class="code-step code-step-indent lurd"></p>
-          <p class="code-step"> } </p>
-          <p class="code-step loop">repeat (2) { </p>
+          <p class="code-step loop code-step-indent">repeat (2) { </p>
+          <p class="code-step lurd code-step-indent-2"></p>
+          <p class="code-step if-else code-step-indent-2">if (<span class="dot"></span>)</p>
+          <p class="code-step if-else code-step-indent-3">break</p>
+          <p class="code-step loop code-step-indent">}</p>
           <p class="code-step lurd code-step-indent"></p>
-          <p class="code-step"> } </p>
+          <p class="code-step loop code-step-indent">repeat (2) { </p>
+          <p class="code-step if-else code-step-indent-2">if (<span class="dot"></span>)</p>
+          <p class="code-step if-else code-step-indent-3"></p>
+          <p class="code-step if-else code-step-indent-2"></p>
+          <p class="code-step loop code-step-indent">}</p>
+          <p class="code-step loop">}</p>
           <p class="code-step lurd"></p>
         </div>
       </div>
@@ -107,8 +112,8 @@
 
           var levels = [
             {
-              lev: [1, 2, 1, -1],
-              win: [1, 2, 2, 1, 1, -1]
+              lev: [-2, -1, 2, -2],
+              win: [-2,-1,-2,2,-2,-2,-2,-1,-2,-2]
             }
           ];
           print();
@@ -255,20 +260,20 @@
               document.getElementsByTagName("circle")[15].setAttribute("cy", value.x);
               isPlaying = false
               $('#lossModal').modal({
-                  backdrop: 'static',
-                  keyboard: false
-                });
-                $('#lossModal').modal('show');
+                backdrop: 'static',
+                keyboard: false
+              });
+              $('#lossModal').modal('show');
             }
             if (count === levels[i].win.length) {
               count = 0;
               console.log("you win the level");
               isPlaying = false
               $('#winModal').modal({
-                  backdrop: 'static',
-                  keyboard: false
-                });
-                $('#winModal').modal('show');
+                backdrop: 'static',
+                keyboard: false
+              });
+              $('#winModal').modal('show');
               //alert("can't stop the champion!bravo! you win the level");
             }
           }

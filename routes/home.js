@@ -10,7 +10,7 @@ const { encrypt, decrypt } = require('../crypto');
 const nodemailer = require("nodemailer");
 
 const { isAdmin, isLoggedIn } = require('../middleware');
-const levelData = require('./levelData')
+const data = require('./levelData')
 const { userSchema } = require('../Schema.js');
 
 async function sEmail(email, username, resetLinkCount) {
@@ -75,6 +75,18 @@ router.get("/", (req, res) => {
 })
 
 router.get("/levels", isLoggedIn, (req, res) => {
+   let levelData = data;
+   // 1 2 3 4 5 6 7 8 9 
+   for(let i=0;i<levelData.length;i++){
+      if(i <= req.user.maxLevel){
+         levelData[i].isLocked = false
+         levelData[i].url = `/lev/${i+1}`
+      }
+      if(i > req.user.maxLevel){
+         levelData[i].url = '#'
+         levelData[i].isLocked = true
+      }
+   }
    res.render('lev.ejs', { levelData })
 })
 

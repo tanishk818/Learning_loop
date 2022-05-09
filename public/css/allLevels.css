@@ -12,10 +12,10 @@ body {
 .description {
   display: none;
 }
-.card:hover {
+.levelCard:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   transform: scale(1.05);
 }
-.card:hover .description {
+.levelCard:hover .description {
   display: inherit;
 }

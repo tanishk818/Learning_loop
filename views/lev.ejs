@@ -21,16 +21,23 @@
   <%- include('./partials/navbar')%>
     <div class="container-fluid py-5 my-5">
       <%- include('./partials/flash_new')%>
-        <% for(let i=0, k=0;i<2;i++){ %>
+        <% for(let i=0, k=0;i<3;i++){ %>
           <div class="row py-4">
             <% for(let j=0;j<4;j++){ %>
               <div class="col-3 mx-auto">
                 <a class="level-link" href='<%= levelData[k].url %>'>
-                  <div class="card bg-body rounded">
+                  <div class="card bg-body rounded <%= !levelData[k].isLocked  ? 'levelCard' : '' %>">
                     <img src="/img/<%= levelData[k].image %>" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h4 class="card-text">
                         <%= levelData[k].name %>
+                          <% if(levelData[k].isLocked === true){ %>
+                            <svg style="float: right;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                              class="bi bi-lock-fill" viewBox="0 0 16 16">
+                              <path
+                                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                            </svg>
+                            <% } %>
                       </h4>
                       <p class="card-text description">
                         <%= levelData[k++].description %>
