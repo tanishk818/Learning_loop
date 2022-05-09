@@ -17,7 +17,7 @@ async function sEmail(email, username, resetLinkCount) {
    const d = new Date();
    var str = email + "@#$" + d + "@#$" + username + "@#$" + resetLinkCount;
    var tab = encrypt(Buffer.from(str, 'utf8'));
-   var link = "http://localhost:3000/resetPassword/" + tab.iv + "/" + tab.content;
+   var link = "http://learning-loop-game.herokuapp.com/resetPassword/" + tab.iv + "/" + tab.content;
    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
