@@ -91,7 +91,7 @@ router.get("/levels", isLoggedIn, (req, res) => {
 })
 
 router.get("/admin", isAdmin, async (req, res) => {
-   let noOfLevels = 9;
+   let noOfLevels = 12;
    let users = await User.find({});
    let feedbacks = await Feedback.find({})
 
